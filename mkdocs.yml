@@ -1,12 +1,126 @@
-site_name: My Content
+site_name: Do f"{X}" with Data
+repo_url: https://github.com/ramonpzg/rpg_content
+repo_name: RPG_Content
+copyright: Copyright &copy; 2022 Ramon Perez
+
+
+# theme:
+#   palette:
+#     scheme: slate
+#     primary: indigo
+
+nav:
+  - Home: index.md
+  - Set Up: setup.md
+  - Product: explanation.md
+  - Data Engineering: tutorials.md
+  - Data Analytics:
+    - analytics/index.md
+    - Introduction: analytics/introduction.md
+    - 01_jupyter_intro: analytics/01_jupyter_intro.md
+    - 01_python_installation: analytics/01_python_installation.md
+    - 02_anaconda_installation: analytics/02_anaconda_installation.md
+    - 02_types_vars: analytics/02_types_vars.md
+    - 03_git_installation: analytics/03_git_installation.md
+    - 03_structures: analytics/03_structures.md
+    - 04_tools: analytics/04_tools.md
+    - 05_control_flow: analytics/05_control_flow.md
+    - 06_terminal: analytics/06_terminal.md
+    - 07_version_control: analytics/07_version_control.md
+    - 08_intermediate_python: analytics/08_intermediate_python.md
+    - 09_numerical_computing: analytics/09_numerical_computing.md
+    - 10_structured_data: analytics/10_structured_data.md
+    - 11_getting_data: analytics/11_getting_data.md
+    - 12_data_cleaning: analytics/12_data_cleaning.md
+    - 13_dataviz: analytics/13_dataviz.md
+    - 14_static_dataviz: analytics/14_static_dataviz.md
+    - 15_interactive_dataviz: analytics/15_interactive_dataviz.md
+    - 16_static_auctions: analytics/16_static_auctions.md
+    - 17_interactive_airbnb: analytics/17_interactive_airbnb.md
+    - 18_stats_intro: analytics/18_stats_intro.md
+    - 19_data_prep_p1: analytics/19_data_prep_p1.md
+    - 20_data_prep_p2: analytics/20_data_prep_p2.md
+    - 21_describing_data: analytics/21_describing_data.md
+    - 22_eda: analytics/22_eda.md
+    - README: analytics/README.md
+    # - index: analytics/index.md
+    - introduction: analytics/introduction.md
+    - json_tutorial: analytics/json_tutorial.md
+    - read_json: analytics/read_json.md
+  - Data Science: how-to-guides.md
+  - ML Engineering: reference.md
+  - DevOps Engineering: explanation.md
+  - Software Dev: explanation.md
+  - DataViz: explanation.md
 
 
 theme:
-  name: "material"
+  name: material
+  language: en
+  #logo: assets/logo.png
+  palette:
+    - scheme: slate
+      primary: pink
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.instant
+    # - navigation.tabs.sticky
+    - content.tabs.link
+    - toc.follow
+    - navigation.top
+  font:
+    text: Roboto
+    # code: Roboto Mono
 
-nav:
-  - index.md
-  - tutorials.md
-  - how-to-guides.md
-  - reference.md
-  - explanation.md
+markdown_extensions:
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - admonition
+  - toc:
+      baselevel: 2
+      permalink: true
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - md_in_html
+
+plugins:
+  - include-markdown
+  - search:
+      lang: en
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/zillionare
+      name: Github
+    - icon: material/email
+      link: "mailto:code@jieyu.ai"
