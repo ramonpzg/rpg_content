@@ -12,16 +12,17 @@ copyright: Copyright &copy; 2022 Ramon Perez
 nav:
   - Home: index.md
   - Set Up: setup.md
+    - Terminal: analytics/01_python_installation.md
+    - 01_python_installation: analytics/01_python_installation.md
+    - 02_anaconda_installation: analytics/02_anaconda_installation.md
+    - 03_git_installation: analytics/03_git_installation.md
   - Product: explanation.md
   - Data Engineering: tutorials.md
   - Data Analytics:
     - analytics/index.md
     - Introduction: analytics/introduction.md
     - 01_jupyter_intro: analytics/01_jupyter_intro.md
-    - 01_python_installation: analytics/01_python_installation.md
-    - 02_anaconda_installation: analytics/02_anaconda_installation.md
     - 02_types_vars: analytics/02_types_vars.md
-    - 03_git_installation: analytics/03_git_installation.md
     - 03_structures: analytics/03_structures.md
     - 04_tools: analytics/04_tools.md
     - 05_control_flow: analytics/05_control_flow.md

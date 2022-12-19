@@ -1,0 +1,2339 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>08_intermediate_python - Do f"{X}" with Data</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="deep-purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#02-intermediate-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Do f&#34;{X}&#34; with Data" class="md-header__button md-logo" aria-label="Do f"{X}" with Data" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Do f"{X}" with Data
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              08_intermediate_python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramonpzg/rpg_content" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RPG_Content
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../setup/" class="md-tabs__link">
+      Set Up
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../explanation/" class="md-tabs__link">
+      Product
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../tutorials/" class="md-tabs__link">
+      Data Engineering
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Data Analytics
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../how-to-guides/" class="md-tabs__link">
+      Data Science
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../reference/" class="md-tabs__link">
+      ML Engineering
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../explanation/" class="md-tabs__link">
+      DevOps Engineering
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../explanation/" class="md-tabs__link">
+      Software Dev
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../explanation/" class="md-tabs__link">
+      DataViz
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Do f&#34;{X}&#34; with Data" class="md-nav__button md-logo" aria-label="Do f"{X}" with Data" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Do f"{X}" with Data
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramonpzg/rpg_content" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RPG_Content
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/" class="md-nav__link">
+        Set Up
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/" class="md-nav__link">
+        Product
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/" class="md-nav__link">
+        Data Engineering
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Data Analytics</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Data Analytics" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Data Analytics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_jupyter_intro/" class="md-nav__link">
+        01_jupyter_intro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_python_installation/" class="md-nav__link">
+        01_python_installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_anaconda_installation/" class="md-nav__link">
+        02_anaconda_installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_types_vars/" class="md-nav__link">
+        02_types_vars
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_git_installation/" class="md-nav__link">
+        03_git_installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_structures/" class="md-nav__link">
+        03_structures
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_tools/" class="md-nav__link">
+        04_tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_control_flow/" class="md-nav__link">
+        05_control_flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_terminal/" class="md-nav__link">
+        06_terminal
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_version_control/" class="md-nav__link">
+        07_version_control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          08_intermediate_python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        08_intermediate_python
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#02-intermediate-python" class="md-nav__link">
+    02 Intermediate Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#welcome-to-module-2" class="md-nav__link">
+    Welcome to Module 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-recap-of-module-1" class="md-nav__link">
+    I. Recap of Module 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-learning-outcomes" class="md-nav__link">
+    II. Learning Outcomes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-lists-arrays-and-matrices" class="md-nav__link">
+    1. Lists, Arrays, and Matrices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-lists-and-arrays" class="md-nav__link">
+    1.1 Lists and Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Lists and Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-lists-and-matrices" class="md-nav__link">
+    1.2 Lists and Matrices
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Lists and Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6" class="md-nav__link">
+    Exercise 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    Dictionaries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-more-on-control-flow" class="md-nav__link">
+    4. More on Control Flow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-conditional-statements" class="md-nav__link">
+    4.1 Conditional Statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-functions" class="md-nav__link">
+    4.2 Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-loops" class="md-nav__link">
+    4.3 Loops
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-list-comprehensions" class="md-nav__link">
+    4.2 List Comprehensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awesome-work-now-to-numerical-computing" class="md-nav__link">
+    Awesome Work! Now to Numerical Computing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_numerical_computing/" class="md-nav__link">
+        09_numerical_computing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_structured_data/" class="md-nav__link">
+        10_structured_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_getting_data/" class="md-nav__link">
+        11_getting_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_data_cleaning/" class="md-nav__link">
+        12_data_cleaning
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_dataviz/" class="md-nav__link">
+        13_dataviz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_static_dataviz/" class="md-nav__link">
+        14_static_dataviz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_interactive_dataviz/" class="md-nav__link">
+        15_interactive_dataviz
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_static_auctions/" class="md-nav__link">
+        16_static_auctions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_interactive_airbnb/" class="md-nav__link">
+        17_interactive_airbnb
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_stats_intro/" class="md-nav__link">
+        18_stats_intro
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_data_prep_p1/" class="md-nav__link">
+        19_data_prep_p1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_data_prep_p2/" class="md-nav__link">
+        20_data_prep_p2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21_describing_data/" class="md-nav__link">
+        21_describing_data
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22_eda/" class="md-nav__link">
+        22_eda
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../README.md" class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../json_tutorial/" class="md-nav__link">
+        json_tutorial
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read_json/" class="md-nav__link">
+        read_json
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-guides/" class="md-nav__link">
+        Data Science
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        ML Engineering
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/" class="md-nav__link">
+        DevOps Engineering
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/" class="md-nav__link">
+        Software Dev
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../explanation/" class="md-nav__link">
+        DataViz
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#02-intermediate-python" class="md-nav__link">
+    02 Intermediate Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#welcome-to-module-2" class="md-nav__link">
+    Welcome to Module 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-recap-of-module-1" class="md-nav__link">
+    I. Recap of Module 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-learning-outcomes" class="md-nav__link">
+    II. Learning Outcomes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-lists-arrays-and-matrices" class="md-nav__link">
+    1. Lists, Arrays, and Matrices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-lists-and-arrays" class="md-nav__link">
+    1.1 Lists and Arrays
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Lists and Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    Exercise 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    Exercise 2
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3" class="md-nav__link">
+    Exercise 3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-lists-and-matrices" class="md-nav__link">
+    1.2 Lists and Matrices
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Lists and Matrices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4" class="md-nav__link">
+    Exercise 4
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5" class="md-nav__link">
+    Exercise 5
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6" class="md-nav__link">
+    Exercise 6
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dictionaries" class="md-nav__link">
+    Dictionaries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-more-on-control-flow" class="md-nav__link">
+    4. More on Control Flow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#41-conditional-statements" class="md-nav__link">
+    4.1 Conditional Statements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-functions" class="md-nav__link">
+    4.2 Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-loops" class="md-nav__link">
+    4.3 Loops
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-list-comprehensions" class="md-nav__link">
+    4.2 List Comprehensions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awesome-work-now-to-numerical-computing" class="md-nav__link">
+    Awesome Work! Now to Numerical Computing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <a href="https://github.com/ramonpzg/rpg_content/edit/master/docs/analytics/08_intermediate_python.md" title="Edit this page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+  <h1>08_intermediate_python</h1>
+
+<h2 id="02-intermediate-python">02 Intermediate Python<a class="headerlink" href="#02-intermediate-python" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>"You don’t learn to walk by following rules. You learn by doing, and by falling over." ~ Richard Branson</p>
+<p>"The more I read, the more I acquire, the more certain I am that I know nothing." ~ Voltaire</p>
+<p>"Wisdom is learning what to overlook." ~ William James</p>
+</blockquote>
+<p><img alt="design" src="https://images.squarespace-cdn.com/content/v1/550de105e4b05c49fa2bba03/1427382478878-8C6Q2AZEMDSIXN6FDM33/ke17ZwdGBToddI8pDm48kDvWa9rkDjGQjutb1Mb5UhV7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0jAoOkRmPE63FUjiJOEKAz703yOF8ekCQn50Wxz5T7EJdxiRQkG9SuxresrSOcnJaQ/13.nobels%2C+no+degrees_new_layout.jpg?format=2500w" /></p>
+<p><strong>Source:</strong> <a href="http://giorgialupi.com/lalettura">Giorgia Lupi</a></p>
+<h2 id="welcome-to-module-2">Welcome to Module 2<a class="headerlink" href="#welcome-to-module-2" title="Permanent link">&para;</a></h2>
+<p>I. Recap of Module 1<br />
+II. Learning Outcomes  </p>
+<p><strong>Outline for Module 2 Part 1:</strong></p>
+<ol>
+<li>List, Arrays, and Matrices</li>
+<li>More on Dictionaries</li>
+<li>More on control flow<ul>
+<li>Conditional statements</li>
+<li>Functions</li>
+<li>Loops  </li>
+<li>List Comprehensions</li>
+</ul>
+</li>
+</ol>
+<h2 id="i-recap-of-module-1">I. Recap of Module 1<a class="headerlink" href="#i-recap-of-module-1" title="Permanent link">&para;</a></h2>
+<p>Let's begin by summarising what we learned in lesson 1.</p>
+<ol>
+<li>Data types help us have a clear view of the information we are dealing with. They can be <code>int</code>, <code>string</code>, <code>float</code>, or <code>booleans</code>.</li>
+<li>Data structures allow us to hold information in different formats and in different ways. Some of the most important data structures we have at our disposal are <code>dictionaries</code>, <code>tuples</code>, <code>lists</code>, and <code>sets</code>.<ul>
+<li>Dictionaries are key-value pair data structures that can hold different kind of information for us and does not follow the same convension or strictness of other data types/structures and variables. Dictionaries are also mutable (a.k.a. the values they hold for us can be changed).</li>
+<li>Lists are the most versatile data structure in Python, they can hold all sorts of data types --and strucures-- and are also mutable.</li>
+<li>Tuples are lists cousins, but that they don't like change and are immutable.</li>
+<li>Sets are like tuples, except that sets don't like to hold the same data twice (i.e. they don't like to have duplicates).</li>
+</ul>
+</li>
+<li>Variables are buckets that hold specific objects for us. They can only have letters, numbers, and underscores for their names. They cannot begin with a number, and they have to be followed by an equal (<code>=</code>) sign that represents assignment.</li>
+<li>There are several ways for printing in Python, and we will use all of them throughout the course.<ul>
+<li><code>print(f"Something {cool}")</code></li>
+<li><code>print("Something {}".format("cool"))</code></li>
+<li><code>print("This is cool too!")</code></li>
+<li><code>print("This is even %s!" % "cooler")</code></li>
+</ul>
+</li>
+<li>Math symbols you should always remember as they are part of your Python calculator.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>What this does!</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>Addition</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Subtraction</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+</tr>
+<tr>
+<td>**</td>
+<td>Exponentiation</td>
+</tr>
+<tr>
+<td>\/</td>
+<td>Division</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Modulo or remainder</td>
+</tr>
+<tr>
+<td>//</td>
+<td>Floor division</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Importing packages conventions.  </li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">package</span>  <span class="c1"># import an entire package and access its element with a .method()</span>
+
+<span class="kn">import</span> <span class="nn">package</span> <span class="k">as</span> <span class="nn">pk</span> <span class="c1"># give your package a nickname</span>
+
+<span class="kn">from</span> <span class="nn">package</span> <span class="kn">import</span> <span class="n">a_function</span> <span class="c1"># import a specific instance of that package you want/need</span>
+
+<span class="kn">from</span> <span class="nn">package</span> <span class="kn">import</span> <span class="n">a_function</span> <span class="k">as</span> <span class="n">a_func</span> <span class="c1"># import a specific instance of that package you want/need with a nickname</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Installing packages. Remember to use a <code>!</code> before a shell command when installing a package from a notebook.  </li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>pip install package <span class="c1"># Python&#39;s own package manager</span>
+conda install -c conda-forge statsmodels <span class="c1"># Anaconda&#39;s package manager</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Loops help us do tasks repeatedly. The <code>a_var</code> below can be any word or letter we'd like.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">a_var</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Something to do with all the </span>
+<span class="sd">    a_var&#39;s inside a_list.</span>
+<span class="sd">    e.g. print the elements</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a_var</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li><code>if-else</code> statements allow us to do operations based on logical statements that evaluate to True or False.  </li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yay, I knew it :)&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Oopss, let me revisit this one first&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Functions help us save time by allowing us to package simple-to-complex operations into one place. They follow the DRY convention, which stands for "Don't Repeat Yourself."</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">do_something_cool</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span> <span class="c1"># here you define your function and the inputs it should take</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Do something cool with your name and your age</span>
+<span class="sd">    then return or print that cool thing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s2">&quot;the cool thing you just did&quot;</span>
+
+<span class="n">do_something_cool</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span> <span class="c1"># now test your function with some data</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="ii-learning-outcomes">II. Learning Outcomes<a class="headerlink" href="#ii-learning-outcomes" title="Permanent link">&para;</a></h2>
+<p>By the end of this lesson you will have:</p>
+<ol>
+<li>Learned about how to do computations with arrays and matrices</li>
+<li>Learned the basics of NumPy</li>
+<li>Solidified your knowledge of loops, if-else statements, and functions</li>
+<li>Learned the basics of how to load data into Python</li>
+<li>A working knowledge of why we store data using different formats and when to use which</li>
+</ol>
+<h2 id="1-lists-arrays-and-matrices">1. Lists, Arrays, and Matrices<a class="headerlink" href="#1-lists-arrays-and-matrices" title="Permanent link">&para;</a></h2>
+<p><code>Arrays</code> in computer science and data analytics are collections (or <code>lists</code>) of elements that have an index attached to them. Think of any of the spreadsheet tools you have used in the past, most of them probably had rows and columns (which are each arrays), and the combination of both, a cell or element, came with a row number (the index), and a column letter (the name of another array).</p>
+<p>In Python, lists are our first representation of arrays and nested lists are our first representation of a <code>matrix</code> (e.g. the entire spreasheet).</p>
+<p>Let's dive a bit deeper into all of these.</p>
+<h2 id="11-lists-and-arrays">1.1 Lists and Arrays<a class="headerlink" href="#11-lists-and-arrays" title="Permanent link">&para;</a></h2>
+<p>In the previous lesson, we introduced lists as a highly useful data structure that allows us to have multiple data types and other data structures in one place. This versitile functionality allow us to depend on lists for many simple and complex tasks, such as representing the rows and the columns of a spreadsheet.</p>
+<p>You can think of lists inside nested lists as either a row (a one dimensional array), or a column (another one dimensional array). Just like a spreadsheet can hold text, numbers, and functions in a single cell, so can lists in Python but to an even larger extent.</p>
+<p>Remember, lists can be created with two square brackets <code>[]</code> or with the function <code>list()</code> (brackets is easier and faster), its elements have to be separated by commas, and you can always verify that the data type is correct by wrapping the <code>type()</code> function around your list.</p>
+<p>Let's look at some examples.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Amazon&#39;</span><span class="p">,</span> <span class="s1">&#39;Facebook&#39;</span><span class="p">,</span> <span class="s1">&#39;Google&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">,</span> <span class="s1">&#39;Apple&#39;</span><span class="p">,</span> <span class="s1">&#39;General Motors&#39;</span><span class="p">]</span>
+<span class="n">year_founded</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1996</span><span class="p">,</span> <span class="mi">1998</span><span class="p">,</span> <span class="mi">2004</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">1976</span><span class="p">,</span> <span class="mi">1908</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">companies</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">year_founded</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Now that we have two lists to work with, let's go over how to access the items in these arrays. Accessing items in lists or arrays is also called slicing. Think of this as slicing a cake, our intentions might be to eat a whole cake every time we see one (I definitely do), but most-often than not, one piece is all we need to enjoy the cake and the rest can be safely store in a new plate or container. For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Imagine we have a chocolate cake</span>
+<span class="n">cake_slices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># with 8 slices</span>
+<span class="n">slices_left</span> <span class="o">=</span> <span class="n">cake_slices</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span> <span class="c1"># and we ate two in a sit</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">slices_left</span><span class="p">))</span>
+<span class="c1"># 6</span>
+</code></pre></div></td></tr></table></div>
+<p>Lists have what is called an index. Think of indexes as the numbers you will see in the rows of a spreadsheet and think of the variables as the letters of the columns. With that in mind, we know that Amazon in our companies list is at the beginning, hence, it has an index of 0. Remember, Python starts counting from 0.</p>
+<p>Let's access several elements to warm up.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">year_founded</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>To select a range of values in our list we can use a colon <code>:</code>, where the number on the left will be the starting point, and the number on the right the element our slice will go up to and not include. Slicing lists and other data structures in Python is, for the most part, always not-inclusive of the last item.</p>
+<p>We can also leave the right-hand side of the colon <code>[2:]</code> in our slice opened to signal that we want to select all of the values from our starting point to the end of the list.</p>
+<p>The same happens when we do the opposite and provide an ending point but not a starting one, our slice will select all values from the beginning and up to, but not including, the number on the right of the column.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">year_founded</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">year_founded</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># if you try to access a range that doesn&#39;t match the length of the list,</span>
+<span class="c1"># you will get an all of the elements in the list and nothing more</span>
+<span class="n">year_founded</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span> <span class="c1"># this list does not have 10 elements</span>
+</code></pre></div></td></tr></table></div>
+<p>Sometimes, lists become quite long and it is difficult to see what's in between or at the end. To see the end on a list, we can use the the minus <code>-</code> with any number except zero, and Python will give us the adequate number for such location. For example, <code>-1</code> will be equal to the last element of the list, <code>-2</code> will be equal to the second to last, and so forth.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>You can also use negative indexes with slicers. Sometimes there is a very good reason to do so, e.g. with extremely long lists for which you know you need the last or second to last elements, other times, it might give you a headache to count that way.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># ignores the last two</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">companies</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span> <span class="c1"># starts from the third to last element and goes all the way to the end of the list</span>
+</code></pre></div></td></tr></table></div>
+<p>We can also select every other element inside a list with a double colon where the first number is the starting point, the sencon is the ending point, and the third is the step.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">steping_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">steping_list</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">steping_list</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">steping_list</span><span class="p">[:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>We can append elements to a list or different lists together with a <code>+</code> sign or with the <code>.append()</code> method. </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">b_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="n">c_list</span> <span class="o">=</span> <span class="n">a_list</span> <span class="o">+</span> <span class="n">b_list</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c_list</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>We can also create an empty list with the square brackets <code>[]</code> and <code>.append()</code> anything to it. This is done very often in Python and usually through loops.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Regular version</span>
+<span class="n">d_list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># an empty list</span>
+<span class="n">d_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">d_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">d_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d_list</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>If we want to have the last value of our list removed, say we don't want to have General Motos in our list of companies anymore but rather have Microsoft, we can use the method <code>.pop()</code>. You can use this method with an index value to indicate which element of your list you would like to see disappear, or you can choose to use it without any arguments and <code>.pop()</code> will remove the last element of the list.</p>
+<p>Let's first use <code>.pop()</code> without an index and then see what happens with an index.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Without and index</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">companies</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># With an index</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">companies</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># select the element at index 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>One last thing that is useful to know about <code>.pop()</code> is that the element that gets removed from the list can be immediately added to a variable.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Add the `.pop()`ed value to the a new variable</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Australia&#39;</span><span class="p">,</span> <span class="s1">&#39;New Zealand&#39;</span><span class="p">,</span> <span class="s1">&#39;Uganda&#39;</span><span class="p">,</span> <span class="s1">&#39;Portugal&#39;</span><span class="p">,</span> <span class="s1">&#39;Taiwan&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:&quot;</span><span class="p">,</span> <span class="n">countries</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">taiwan</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:&quot;</span><span class="p">,</span> <span class="n">countries</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New variable:&quot;</span><span class="p">,</span> <span class="n">taiwan</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>If you would like to insert a new element at a specific index location, you can use the method <code>.insert()</code> which takes two arguments, the first is the index of the list where you would like to put the element at, and the second is the element or elements you will be inserting to your list.</p>
+<p>Since we like Tesla, let's add it back to our companies list at the same location it was at before. 🚗</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Adding Tesla back</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">companies</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Tesla&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Adding back General Motors too</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">companies</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;General Motors&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:&quot;</span><span class="p">,</span> <span class="n">companies</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>If we would like to add a list to another list in a more functional way, using something similar to <code>.append()</code> or <code>.insert()</code>, we can use the method <code>.extend()</code> on the list we would like to modify. Then, we can pass as an argument the additional one (i.e. the one we want to add).</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before a_list:&quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before b_list:&quot;</span><span class="p">,</span> <span class="n">b_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">a_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">b_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After, combined lists:&quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>It is important point out the difference between funcs and methods again as it is subtle but very important. A method is usually applied to the original data type or structure while the function generates a new data type or structure. Think of this as:</p>
+<ul>
+<li><code>function(object)</code> --&gt; How can I <strong>transform</strong> or use data</li>
+<li><code>object.function()</code> --&gt; How can I <strong>modify</strong> the existing data type or structure</li>
+</ul>
+<p>Other useful functions that are always available in Python are <code>min()</code>, <code>max()</code>, <code>sorted()</code>, <code>sum()</code>, and many, many more that you can explore yourself by going to the following link, <a href="https://docs.python.org/3/library/functions.html">built-in Python funcs</a>.</p>
+<p>You can also inspect all of the functions available in a module by using the function dir<code>dir(module)</code> after you have imported the module.</p>
+<p>Let's compare some of the bult-in functions since you will use some of them quite often in data analytics.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">21</span><span class="p">]</span>
+
+<span class="c1"># Let&#39;s first compare the method sort with the function sorted</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This list is now sorted: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">90</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;But it didn&#39;t stay like that for long: </span><span class="si">{</span><span class="n">numbers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">numbers</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;This list was sorted, and it stayed like that --&gt; </span><span class="si">{</span><span class="n">numbers</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>When we have lists or arrays of numbers we will often want to explore their content. For example, knowing the maximum and minimum values in a list gives us a sense of the range of the numbers in that array. In addition, knowing the length and the mode will help us understand how many elements or data points are in our arrays and how often does the most repeated one, or the most repeated ones, appear.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The maximum value in our array is: </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The minimum value in our array is: </span><span class="si">{</span><span class="nb">min</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The lenght of our array is: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The range of our array is: </span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>We can find out the index of any element in our list by using the <code>.index()</code> method and passing to it the element we are interested in.</p>
+<p>For example, say we are interested in knowing where the number 21 is located at in our list so that we can remove it. With the <code>.index()</code> all we need to do is pass that method to it, and Python will provide us with its location.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">numbers</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Our sorted list called <code>numbers</code> has (a length of) 15 elements, and since its maximum value is 21, the index of this max number is 14, or simply, the last index.</p>
+<p>We can fully copy a list in several different ways but we will focus on the following two most of the time.
+- The first is by slicing it completely with <code>[:]</code> at the end.
+- The second is  using the method <code>.copy()</code> on a list and assigning the copy to a new variable.  </p>
+<p><strong>Note:</strong> in most cases, you always want to assign the new copy to a new variable or object you are working with.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Our original list: &quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">)</span>
+<span class="n">a_copy</span> <span class="o">=</span> <span class="n">a_list</span><span class="p">[:]</span>
+<span class="n">a_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Our original list again: &quot;</span><span class="p">,</span> <span class="n">a_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Our new (unaffected) copy: &quot;</span><span class="p">,</span> <span class="n">a_copy</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>We will sometimes need to delete some or all of the elements in a list. To do this, we can either use <code>del some_list</code> or the method <code>.clear()</code> on our list.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">temporary_list_a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="c1"># Let&#39;s first delete a single element</span>
+
+<span class="k">del</span> <span class="n">temporary_list_a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># this will delete the element at index two which is 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temporary_list_a</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># No slice will delete the full list and we will receive an error</span>
+<span class="c1"># if we try to print it after deleting it</span>
+
+<span class="k">del</span> <span class="n">temporary_list_a</span> <span class="c1"># deletes the full list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temporary_list_a</span><span class="p">)</span> <span class="c1"># can&#39;t print anything</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># let&#39;s try the next method with the following list</span>
+
+<span class="n">temporary_list_b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temporary_list_b</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># The clear method leaves an empty list behind but does not delete the variable holding it</span>
+<span class="n">temporary_list_b</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temporary_list_b</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="exercise-1">Exercise 1<a class="headerlink" href="#exercise-1" title="Permanent link">&para;</a></h3>
+<p>Create a range of 20 numbers and create a slice of the last 5 elements.
+- Name the list <code>first_list</code>.
+- Name the slice <code>first_slice</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<h3 id="exercise-2">Exercise 2<a class="headerlink" href="#exercise-2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Create a list with string data only and name it <code>string_list</code>. Add at least 5 elements.</li>
+<li>Create a slice of at least two elements and assign it to a variable called <code>string_slice</code>.</li>
+<li>Create a slice of one element of your list with a further slice of one letter. Assign it to a variable called <code>tiny_slice</code>.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<h3 id="exercise-3">Exercise 3<a class="headerlink" href="#exercise-3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Create a list of 30 numbers and assign it to the variable <code>thirty</code>.</li>
+<li>Select every other element.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<h2 id="12-lists-and-matrices">1.2 Lists and Matrices<a class="headerlink" href="#12-lists-and-matrices" title="Permanent link">&para;</a></h2>
+<p>Matrices are two-dimensional arrays that help us do computations with data, of the same or different structure, and that can be thought of as rows and columns of a spreadsheet. Think of the computations of matrices as small pieces of operations on data in a spreadsheet. For example, the addition of all of the elements in column A and column B starting from row 1 and ending in row 15 of Excel.</p>
+<p>Matrices in plain Python can be created as lists of lists, which are often referred to as nested lists. For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">A_matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">19</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A_matrix</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>You can access the data in a matrix in a similar fashion as with lists of only one dimension, but you will need an additional bracket and numbers next to the first set of slicing brackets, e.g. <code>Matrix[1][2]</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">A_matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>In the example above, the first bracket is in charge of selecting a row, and the second will select a column. For example, to get the number <code>19</code> from the previous matrix, <code>[1]</code> in the first bracket selects the second row of the list, and <code>[2]</code> in the second bracket selects the third column.</p>
+<p>Let's now get the number 15 from our <code>A_matrix</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">A_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>To change the element of a list, array, or matrix, you can add an equal sign to the right of the matrix with the sliced data and add the element you want to the right of it. Remember, lists are mutable data structures, this means we can change their content however and whenever we want.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">A_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">A_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<p>You can also do calculations in only one array of a matrix, provided the array in a matrix is of the appropriate type.</p>
+<p>Let's add the first and third rows of our matrix.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">A_matrix</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will add the first row: </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">sum</span><span class="p">(</span><span class="n">A_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This will add the third row: </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">sum</span><span class="p">(</span><span class="n">A_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The columns are a bit trickier. Here is the third column: </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">A_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">A_matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">A_matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]))</span>
+</code></pre></div></td></tr></table></div>
+<p>When working with data in a matrix, we will most often than not be using the packages pandas or NumPy, the latter being the next topic in this lesson.</p>
+<h3 id="exercise-4">Exercise 4<a class="headerlink" href="#exercise-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Create a list of 50 numbers and assign it to the variable <code>fifty</code>.</li>
+<li>Select every odd number in the list.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<h3 id="exercise-5">Exercise 5<a class="headerlink" href="#exercise-5" title="Permanent link">&para;</a></h3>
+<p>Use a for loop to print all of the elements in your <code>fifty</code> list. Add a nice string-printing format to it with your printing method of choice.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<h3 id="exercise-6">Exercise 6<a class="headerlink" href="#exercise-6" title="Permanent link">&para;</a></h3>
+<p>Use a for loop and iterate over your <code>fifty</code> list while subtracting 5, raising to the power of 2, adding 10, and diving by 3, each element of the list.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+</code></pre></div></td></tr></table></div>
+<h2 id="dictionaries">Dictionaries<a class="headerlink" href="#dictionaries" title="Permanent link">&para;</a></h2>
+<p>Here are some of the most useful methods we can use with dictionaries:</p>
+<ul>
+<li><code>.keys()</code> --&gt; allows us to access all of the first instance keys in our dictionary.</li>
+<li><code>.values()</code> --&gt; allows us to access the first layer of values in our dictionary.</li>
+<li><code>.items()</code> --&gt; gives us the ability to iterate over keys and values in isolation.</li>
+<li><code>.get()</code> --&gt; this method allows us to get a key, if it exists, or pass a default value if it doesn't</li>
+<li><code>.update()</code> --&gt; this method gives us the ability to mutate the dictionary by adding a new one to the old one.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;team_sports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;baseball&#39;</span><span class="p">,</span> <span class="s1">&#39;basketball&#39;</span><span class="p">,</span> <span class="s1">&#39;soccer&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;solo_sports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;tennis&#39;</span><span class="p">,</span> <span class="s1">&#39;golf&#39;</span><span class="p">,</span> <span class="s1">&#39;ping pong&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;motorsports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;formula 1&#39;</span><span class="p">,</span> <span class="s1">&#39;NASCAR&#39;</span><span class="p">,</span> <span class="s1">&#39;formula e&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">sports_dictionary</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="c1"># only the keys are displayed</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">temp_key</span> <span class="ow">in</span> <span class="n">sports_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sports_dictionary</span><span class="p">[</span><span class="n">temp_key</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">temp_key</span> <span class="ow">in</span> <span class="n">sports_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;team&#39;</span> <span class="ow">in</span> <span class="n">temp_key</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sports_dictionary</span><span class="p">[</span><span class="n">temp_key</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">temp_key</span> <span class="ow">in</span> <span class="n">sports_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s1">&#39;solo&#39;</span> <span class="ow">in</span> <span class="n">temp_key</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sports_dictionary</span><span class="p">[</span><span class="n">temp_key</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">temp_key</span><span class="si">}</span><span class="s2"> is not a solo sport&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="c1"># only the values are displayed</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="c1"># keys and values are displayed as tuples inside a list</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">sports_dictionary</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39; and their values &#39;</span><span class="p">,</span><span class="n">values</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="p">[</span><span class="s1">&#39;motorsports&#39;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;motorsports&#39;</span><span class="p">,</span> <span class="s1">&#39;not found&#39;</span><span class="p">)</span> <span class="c1"># this works very well</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sum_two_nums</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;watersports&#39;</span><span class="p">,</span> <span class="n">sum_two_nums</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span> <span class="c1"># this doesn&#39;t work</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">watersports_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;watersports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rowing&#39;</span><span class="p">,</span> <span class="s1">&#39;swimming&#39;</span><span class="p">,</span> <span class="s1">&#39;water polo&#39;</span><span class="p">]}</span>
+<span class="n">watersports_dict</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sports_dictionary</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">watersports_dict</span><span class="p">)</span> <span class="c1"># this works very well</span>
+<span class="n">sports_dictionary</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="4-more-on-control-flow">4. More on Control Flow<a class="headerlink" href="#4-more-on-control-flow" title="Permanent link">&para;</a></h2>
+<p>In the last lesson we learned the very basics of the three most essential part of programming that allow us to deal with conditions, repetitions, and afficiency/fluency with our code. In this section we will cover the same three topics again with an extra hint of complexity and a variation of for loops unique to Python, list comprehensions.</p>
+<ol>
+<li>Conditional statements</li>
+<li>Functions</li>
+<li>Loops</li>
+<li>List Comprehensions</li>
+</ol>
+<h2 id="41-conditional-statements">4.1 Conditional Statements<a class="headerlink" href="#41-conditional-statements" title="Permanent link">&para;</a></h2>
+<p>Conditional statements evaluate arguments and search for the truth for us (very poetic, yes). Unless a statement we pass after the first if evaluates to <code>False</code>, has a <code>0</code>, or is an explicit <code>False</code> (there are a few other exceptions and we will see them in a second), everything after the <code>if</code> will always try to evaluate to <code>True</code>. Every <code>if</code> statement initiation in python needs to end with a <code>:</code> before proceeding to the next line where the statement will do something.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">something_true</span><span class="p">:</span>
+</code></pre></div></td></tr></table></div>
+<p>The next part is the proceedure we will like to see happening.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">something_true</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;do something cool&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this works because it is True&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The defeult action if our statement ends up being <code>False</code> is to do nothing. We can provide our statement with a default action of our choosing though by using an <code>else</code> clause.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this works because it is True&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this does not work because it is False&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this works because it is True&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this does not work because it is False&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The in-between arguments of our wanted condition and our default action are additional parameters that can help us control the flow of our statements. They are a combinations of the <code>if</code> and <code>else</code> clauses but differ in that they cannot start like the <code>if</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">something_true</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;do something cool&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">could_be_this</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;one possibility&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">or_this</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;another possibility&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;false alarm&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;January&#39;</span><span class="p">,</span> <span class="s1">&#39;March&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;July&#39;</span><span class="p">]</span>
+
+<span class="n">months_count</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="s1">&#39;January&#39;</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;ve got this month covered&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="s1">&#39;November&#39;</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;ve got this month covered too&quot;</span><span class="p">)</span>
+    <span class="n">months_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="s1">&#39;April&#39;</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;ve got this month covered too&quot;</span><span class="p">)</span>
+    <span class="n">months_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="s1">&#39;June&#39;</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;ve got this month covered too&quot;</span><span class="p">)</span>
+    <span class="n">months_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="s1">&#39;October&#39;</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;ve got this month covered too&quot;</span><span class="p">)</span>
+    <span class="n">months_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">elif</span> <span class="s1">&#39;March&#39;</span> <span class="ow">in</span> <span class="n">months</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;ve got March covered too&quot;</span><span class="p">)</span>
+    <span class="n">months_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sorry I could not find anything&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">months_count</span>
+</code></pre></div></td></tr></table></div>
+<p>Things that evaluate to False.</p>
+<ul>
+<li>0</li>
+<li>None</li>
+<li>[]</li>
+<li>{}</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">revenue</span> <span class="o">=</span> <span class="mi">10_000_000</span>
+
+<span class="k">if</span> <span class="n">revenue</span> <span class="o">&lt;</span> <span class="mi">10_000_001</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;We need to look at this year&quot;</span><span class="p">)</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All good this year&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="42-functions">4.2 Functions<a class="headerlink" href="#42-functions" title="Permanent link">&para;</a></h2>
+<p>Functions help us avoid repetitions by wrapping our code into a regular Python function like the <code>print()</code> but this time of our making.</p>
+<p>Functions:<br />
+- Need to be defined with
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span>
+</code></pre></div></td></tr></table></div>
+- Can have no arguments and still work 
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+- Can also have a plethora of arguments and still work
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">,</span> <span class="n">many</span><span class="p">,</span> <span class="n">more</span><span class="p">):</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+- Need parentheses, most of the times, to work after they have been defined
+- <code>pass</code> means the function will do nothing</p>
+<p>Let's go over more examples.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Let&#39;s define a function that takes in a number and returns that number to the cube power</span>
+
+<span class="k">def</span> <span class="nf">cube_power</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">**</span> <span class="mi">3</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">cube_power</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># functions can have default values that only changed when needed</span>
+
+<span class="k">def</span> <span class="nf">person_age_finder</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Person&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hi </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, you are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">person_age_finder</span><span class="p">(</span><span class="mi">28</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">person_age_finder</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="s2">&quot;Ramon&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">person_age_finder</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Ramon&quot;</span><span class="p">,</span> <span class="n">age</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">college_major</span><span class="p">(</span><span class="n">student</span><span class="p">,</span> <span class="n">major</span><span class="o">=</span><span class="s2">&quot;undecided&quot;</span><span class="p">,</span> <span class="n">university</span><span class="o">=</span><span class="s2">&quot;unknown&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> is studying </span><span class="si">{}</span><span class="s2">, at </span><span class="si">{}</span><span class="s2"> university&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">student</span><span class="p">,</span> <span class="n">major</span><span class="p">,</span> <span class="n">university</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">college_major</span><span class="p">(</span><span class="n">major</span><span class="o">=</span><span class="s2">&quot;economics&quot;</span><span class="p">,</span> <span class="n">student</span><span class="o">=</span><span class="s2">&quot;Ramon&quot;</span><span class="p">,</span> <span class="n">university</span><span class="o">=</span><span class="s2">&quot;UMKC&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="43-loops">4.3 Loops<a class="headerlink" href="#43-loops" title="Permanent link">&para;</a></h2>
+<p>Loops are the masters of repetition. If we need to do a task multiple times, chances are that loops will help us do that in many different ways.</p>
+<p>Loops:</p>
+<ul>
+<li>begin with a <code>for</code> or <code>while</code> constructor, although so far we've only focused on <code>for</code></li>
+<li>use after the <code>for</code> a next argument which is a random temporary <code>variable</code> that it will use to iterate over the object we want to iterate over</li>
+<li>have an <code>in</code> argument use to point the temporary variable to our list of things or objects</li>
+<li>the object we iterate over can be a list, a string, a dictionary, a set, a tuple, an iterable, and a few other objects in Python</li>
+<li>the construction of the loop ends with <code>:</code></li>
+<li>and what follows are the instructions we will like to see repeatedly</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">list_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;candy&#39;</span><span class="p">,</span> <span class="s1">&#39;loren&#39;</span><span class="p">,</span> <span class="s1">&#39;xavier&#39;</span><span class="p">,</span> <span class="s1">&#39;jackson&#39;</span><span class="p">,</span> <span class="s1">&#39;tyrell&#39;</span><span class="p">,</span> <span class="s1">&#39;sam&#39;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">list_names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hi your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">26</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">age</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">list_names</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hi your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and you are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>We can also combine functions and loops.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">greetings</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hi your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and you are </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">age</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ages</span><span class="p">,</span> <span class="n">list_names</span><span class="p">):</span>
+    <span class="n">greetings</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="42-list-comprehensions">4.2 List Comprehensions<a class="headerlink" href="#42-list-comprehensions" title="Permanent link">&para;</a></h2>
+<p>List comprehensions are loops cousins. They can do almost everything loops can do but their final output is always a list. They prove especially useful when we need a fast loop for prototyping and we don't want to go through construncting a loop from scratch.</p>
+<p>The main difference between list comprehensions and regular loops is that the action happens first. For example, if you want to add the number 1 to a range of integers, we would have <code>number + 1</code> at the begining of the list comprehension. If we wanted to make a list with all of the letters of a sentence in lower case, we would apply that <code>.lower()</code> function to our temporary variable at the start.</p>
+<p>The other thing you need to keep in mind is that list comprehensions need to be wrapped around brackets.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">[</span><span class="n">number</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span> <span class="c1"># first example</span>
+<span class="p">[</span><span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s2">&quot;HeLLO LISTS ComPREHENSIONS&quot;</span><span class="p">]</span> <span class="c1"># second example</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">list_nums</span> <span class="o">=</span> <span class="p">[</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">)]</span>
+<span class="n">list_nums</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">list_nums2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">list_nums2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">list_nums2</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">list_letters</span> <span class="o">=</span> <span class="p">[</span><span class="n">letter</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="s2">&quot;THIS WAS AN UPPER CASE STRING&quot;</span><span class="p">]</span>
+<span class="n">list_letters</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">better_list_letters</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="s2">&quot;THIS WAS AN UPPER STRING&quot;</span><span class="p">])</span>
+<span class="n">better_list_letters</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">([</span><span class="n">a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="s2">&quot;THIS IS A STRING&quot;</span><span class="p">]))</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="awesome-work-now-to-numerical-computing">Awesome Work! Now to Numerical Computing<a class="headerlink" href="#awesome-work-now-to-numerical-computing" title="Permanent link">&para;</a></h2>
+<p><img alt="hi5" src="https://media.giphy.com/media/3BlN2bxcw0l5S/giphy.gif" /></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../07_version_control/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 07_version_control" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              07_version_control
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../09_numerical_computing/" class="md-footer__link md-footer__link--next" aria-label="Next: 09_numerical_computing" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              09_numerical_computing
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Ramon Perez
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://github.com/zillionare" target="_blank" rel="noopener" title="Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="mailto:code@jieyu.ai" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.tabs", "navigation.instant", "content.tabs.link", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+    
+    
+  </body>
+</html>
