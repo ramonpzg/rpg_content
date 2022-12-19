@@ -15,7 +15,7 @@ Ronald E. Osborn
 
 ## 1. Project Definition
 
-![solving](pictures/7.png)
+![solving](../images/7.png)
 
 As data detectives, we want to make sure we have at least a loosly define outline of what our projects involving data might look like. In particular, we want to be extra careful with those involving large amounts of data since errors can, at the very least, be very time consuming and, at worst, expensive.
 
@@ -29,7 +29,7 @@ Since hotels are expensive, we thought we would give Airbnb a try. We found this
 
 ## 2. Data Gathering
 
-![Gathering Data](pictures/9.png)
+![Gathering Data](../images/9.png)
 
 We will be using data scraped from a scraping tool called, [Inside Airbnb](http://insideairbnb.com/index.html). Yes, we will be scraping a bit of data from the scraper itsef. More specifically, we will be taking the skeleton (an html version of the website), downloading it, and then extracting all of the links that will help us get the data from it.
 

@@ -18,7 +18,7 @@ There are 3 essential aspects of programming that can help any data analyst unde
 
 # 1 Conditional Statements
 
-Conditional stamenets, or, as they are often called, if-then statements, allow us to provide our commands and programs with specific criteria in order to do what they have been told to do. If-then statements work alogside booleans, which were first introduced earlier in the lesson and are abstractions of instructions or commands that evaluate to `True` or `False`. They allow us to compare statements, expressions, objects, etc., and perform specific actions given the boolean evaluation. Essentially give us back 👍🏼 or a 👎🏼 when they finish.
+Conditional statements, or, as they are often called, if-then statements, allow us to provide our commands and programs with specific criteria in order to do what they have been told to do. If-then statements work alongside booleans, which were first introduced earlier in the lesson and are abstractions of instructions or commands that evaluate to `True` or `False`. They allow us to compare statements, expressions, objects, etc., and perform specific actions given the boolean evaluation. Essentially give us back 👍🏼 or a 👎🏼 when they finish.
 
 Here are the symbols for boolean operations again.
 
@@ -119,7 +119,7 @@ if age == 25:
     print(f"Wow, {friend}, you are half way to 50!")
 ```
 
-Since the stamemnt above was True, it evaluated the condition correctly and printed out what we wanted without any issues. What would have happened if the condition would have been False? Let's check that out.
+Since the statement above was True, it evaluated the condition correctly and printed out what we wanted without any issues. What would have happened if the condition would have been False? Let's check that out.
 
 Note that `if` statements have to end with a `:` and continue to a 4-space indented line in order to work. The indentation happens automatically after you insert the `:` and press Enter.
 
@@ -170,11 +170,11 @@ for a_number in [1, 2, 3, 4, 5]:
 Let's break down what just happened.
 
 1. The `for` command tells Python a loop is about to take place.
-2. The variable `a_number` can be any word we want to call it. It is a temporary nickname for the item that will be doing things repeadately.
+2. The variable `a_number` can be any word we want to call it. It is a temporary nickname for the item that will be doing things repeatedly.
 3. The `in` statement let's Python know where the data the temporary variable `a_number` will represent is at.
 4. The `[1, 2, 3, 4, 5]` list can be a variable, a function, a group of words, anything we can iterate over.
 5. The `:` is extremely important, it tells Python that we are about to give it the instructions for our loop. It is very important to note that after we press `Enter`, the next line is exactly 4 spaces away from the edge, if we don't have the following statements at this distance, Python will not do anything with the loop.
-6. The last bit is the instructions we want our loop to do repeatadely. In our case, we want it to `print()` each of the numbers in the list we have provided the loop with.
+6. The last bit is the instructions we want our loop to do repeatedly. In our case, we want it to `print()` each of the numbers in the list we have provided the loop with.
 
 The loop will continue until it has gone through every element in the list (5 in the example above). It is very important to understand when our loop will stop or how many times the loop will cruise through the elements we provided.
 
@@ -230,7 +230,7 @@ for some_number in range(50, 100, 2):
 some_list_2
 ```
 
-We will continue revisiting loops in every lesson, and every single week, so by the end of the course you will be a looping wizzard! :)
+We will continue revisiting loops in every lesson, and every single week, so by the end of the course you will be a looping wizard! :)
 
 # 3 Functions
 
@@ -238,7 +238,7 @@ Functions can be thought of as the encapsulation of instructions or a command. W
 
 You have already seen and used different functions throughout this lesson. For example, `print()` and `len()` are functions that already come with Python and thus don't require that we create them from scratch every single time we need them.
 
-Other functions, which are technically not called functions but behave as such, are called methods. Earlier when you called the `.append()` on a list object inside a loop, you were calling a method that belongs to the data structure list. The difference between regular functions and methods, is that the former can be applied to any object for which the function would do somethig useful and reasonable for, while the latter is called on an object and usually modifies that object given a set of parameters.
+Other functions, which are technically not called functions but behave as such, are called methods. Earlier when you called the `.append()` on a list object inside a loop, you were calling a method that belongs to the data structure list. The difference between regular functions and methods, is that the former can be applied to any object for which the function would do something useful and reasonable for, while the latter is called on an object and usually modifies that object given a set of parameters.
 
 Functions can be created with the word `def`, which implies `define`, followed by the name of your function, parentheses `()`, arguments or no arguments, a colon `:`, and the instructions you would like to save. Let's look at some examples together.
 
@@ -349,7 +349,7 @@ sum_nums_okay(15, 20)
 sum_nums_okay(15, 20, 30)
 ```
 
-It worked as intended and we now have a sense of how we can begin automating repetitive tasks. Loops help us do things repeatadely, if-else staments allow us to apply logical conditions to our code, and functions help us reuse code more efficiently.
+It worked as intended and we now have a sense of how we can begin automating repetitive tasks. Loops help us do things repeatedly, if-else statements allow us to apply logical conditions to our code, and functions help us reuse code more efficiently.
 
 This was just a brief introduction of all three concepts. You will be using them all throughout this course.
 
@@ -357,9 +357,9 @@ This was just a brief introduction of all three concepts. You will be using them
 
 You have learned a great deal today and should be proud of your accomplishments. Let's recap what we have seen thus far.
 
-1. Doing something repeatadely is called a loop.
+1. Doing something repeatedly is called a loop.
 2. Creating logical conditions to evaluate different arguments, can be accomplished with if-then statements.
-3. Instead of writing code over and over again, we can put our code into functions for reusabiliy.
+3. Instead of writing code over and over again, we can put our code into functions for reusability.
 4. To ask the users of our programs to tell us things, we take advantage of the `input()` function.
 5. Jupyter lab will be our best friend for writing code.
 6. Git and GitHub will make sure we never lose our work.

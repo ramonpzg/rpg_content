@@ -28,7 +28,7 @@ Every one of these arrays can represent a categrorical or quantitative variable.
 
 Descriptive statistics are often shown through tables and visualisations. For example, imagine you'd like to know how the average life expectancy of people at age 60 in different countries has changed over time. That visualisation would look like the one below.
 
-![life_exp](pictures/live_exp.png)
+![life_exp](../images/live_exp.png)
 
 __So what should we look for when we want to describe data?__ We want to look for information that gives us facts about the data, such as the most common value of a set of characteristics, how far is a given value in a variable from the average value of that same variable (e.g. how far is the age of a teacher selected at random in all the schools in Sydney from the average age of all teachers in New South Wales). These two kinds of values, the average of a set and the variability of each value in a set, are part of what is known as measures of central tendency and measures of variability, respectively.
 

@@ -11,10 +11,11 @@ copyright: Copyright &copy; 2022 Ramon Perez
 
 nav:
   - Home: index.md
-  - Set Up: setup.md
+  - Set Up:
+    - setup/index.md
     - Terminal: analytics/01_python_installation.md
-    - 01_python_installation: analytics/01_python_installation.md
-    - 02_anaconda_installation: analytics/02_anaconda_installation.md
+    - Python Installation: analytics/01_python_installation.md
+    - Anaconda Installation: analytics/02_anaconda_installation.md
     - 03_git_installation: analytics/03_git_installation.md
   - Product: explanation.md
   - Data Engineering: tutorials.md

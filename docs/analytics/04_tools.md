@@ -88,12 +88,12 @@ You can also add operations with these methods for printing strings. We talk mor
 num1 = 1
 num2 = 3
 
-print("Have you tried to divide %i by %i and mulply the result, %f, back?" % (num1, num2, num1 / num2))
+print("Have you tried to divide %i by %i and multiply the result, %f, back?" % (num1, num2, num1 / num2))
 ```
 
 # 5 Math
 
-Python supports all kinds of calculations and in this section, we'll go over all of the basic operations this poweful programming language can do for us. In order to do math well in Python, you will be using (some more than others) the following notations very often.
+Python supports all kinds of calculations and in this section, we'll go over all of the basic operations this powerful programming language can do for us. In order to do math well in Python, you will be using (some more than others) the following notations very often.
 
 | Operator | What this does! |
 |------|---------------------|
@@ -373,7 +373,7 @@ math.cos?
 
 ## 6.2 Installing New Packages
 
-There will be plenty of times where you will need download, or benefit from downloading, a package that is not already installed in your machine. There are several ways for downloading packages in python and the two preffered ones are `pip` and `conda`.
+There will be plenty of times where you will need download, or benefit from downloading, a package that is not already installed in your machine. There are several ways for downloading packages in python and the two preferred ones are `pip` and `conda`.
 
 `pip` is a python package installer that is run from the command line. It uses the following syntax to install a package.
 
@@ -459,7 +459,7 @@ print(user_name, user_age)
 # 8. Summary
 
 1. To work in and with Python we need to understand the data Python understands. These data types can be strings, integers, floats (floating point numbers), and booleans.
-2. To hold on to the data we need we use a combination of variables and data structures. Variables are like buckets that hold information holders in for us, and data structures are these information hlders that contain multiple bits of information in them. 
+2. To hold on to the data we need we use a combination of variables and data structures. Variables are like buckets that hold information holders in for us, and data structures are these information holders that contain multiple bits of information in them. 
 3. Data structures can be lists, dictionaries, tuples, sets, and we can even create our own data structures if we'd like.
 4. A lot of people have written very useful code that we can take advantage of to save time when we code or, in general, to be more productive. They have packaged their code into libraries and we can download them using `pip` or `conda` in the command line.
 5. Python allows us to do math even more efficiently that with a regular calculator and it gives us many useful functionalities to modify multiple data types with math operators.

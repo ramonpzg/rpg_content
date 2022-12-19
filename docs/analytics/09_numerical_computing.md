@@ -389,7 +389,7 @@ matrix_x[0, 0]
 
 Let's make things a bit more interesting by scaling the complexity of how we slice our matrix X.
 
-![alt](pictures/matrix_x_2.jpeg)
+![alt](../images/matrix_x_2.jpeg)
 
 
 ```python
@@ -436,7 +436,7 @@ temp_matrix
 
 For our last example, let's explore how to get values at a specific point in our matrix.
 
-![alt](pictures/matrix_x_3.jpeg)
+![alt](../images/matrix_x_3.jpeg)
 
 
 ```python
@@ -1138,7 +1138,7 @@ Sometimes, we will need to combine different arrays containing valuable informat
 Let's have a look at all three of these.
 
 
-![stacking](pictures/stacking.jpeg)
+![stacking](../images/stacking.jpeg)
 
 
 ```python
@@ -1260,7 +1260,7 @@ We can also combine multiple logical evaluations and pass them as masks to our a
 year_temp[(year_temp < 80) & (year_temp > 50)]
 ```
 
-Lastly, we could create a matrix resembling the days and months for the 360 (data points) days we have in our array. We could then use one of the many numpy aggregation functions to understand what happend in any given months. (We are simulation the weather in a year 😎.)
+Lastly, we could create a matrix resembling the days and months for the 360 (data points) days we have in our array. We could then use one of the many numpy aggregation functions to understand what happened in any given months. (We are simulation the weather in a year 😎.)
 
 First, let's reshape this array into a matrix with 30 rows to represent the days in a month and 12 columns to represent the months in a year.
 

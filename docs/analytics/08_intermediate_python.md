@@ -28,12 +28,12 @@ __Outline for Module 2 Part 1:__
 
 # I. Recap of Module 1
 
-Let's begin by summarising what we learned in lesson 1.
+Let's begin by summarizing what we learned in lesson 1.
 
 1. Data types help us have a clear view of the information we are dealing with. They can be `int`, `string`, `float`, or `booleans`.
 2. Data structures allow us to hold information in different formats and in different ways. Some of the most important data structures we have at our disposal are `dictionaries`, `tuples`, `lists`, and `sets`.
-    - Dictionaries are key-value pair data structures that can hold different kind of information for us and does not follow the same convension or strictness of other data types/structures and variables. Dictionaries are also mutable (a.k.a. the values they hold for us can be changed).
-    - Lists are the most versatile data structure in Python, they can hold all sorts of data types --and strucures-- and are also mutable.
+    - Dictionaries are key-value pair data structures that can hold different kind of information for us and does not follow the same conventions or strictness of other data types/structures and variables. Dictionaries are also mutable (a.k.a. the values they hold for us can be changed).
+    - Lists are the most versatile data structure in Python, they can hold all sorts of data types --and structures-- and are also mutable.
     - Tuples are lists cousins, but that they don't like change and are immutable.
     - Sets are like tuples, except that sets don't like to hold the same data twice (i.e. they don't like to have duplicates).
 3. Variables are buckets that hold specific objects for us. They can only have letters, numbers, and underscores for their names. They cannot begin with a number, and they have to be followed by an equal (`=`) sign that represents assignment.

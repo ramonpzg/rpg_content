@@ -26,7 +26,7 @@ To create a list you have to use square brackets `[ ]` and separate the values i
 [1, 'Ray', True, 3.7] # this is a very mixed list
 ```
 
-You can also have nested lists, meaning, lists within lists. These nested lists can also be thought of as matricee. We learn about matrices in more depth on week 2, so for now, let's look at two examples to satisfy our curiosity.
+You can also have nested lists, meaning, lists within lists. These nested lists can also be thought of as matrices. We learn about matrices in more depth on week 2, so for now, let's look at two examples to satisfy our curiosity.
 
 
 ```python
@@ -68,7 +68,7 @@ You can initialize a dictionary in several ways:
 
 2. You can create a dictionary with the function `dict()`. For example, `dict(key = value, key2 = value2)`.
 
-**NOTE:** The word `dict` in Python is an actual funtion so please make sure you do not call any variable using this term since you could end up overwriting an important function.
+**NOTE:** The word `dict` in Python is an actual function so please make sure you do not call any variable using this term since you could end up overwriting an important function.
 
 
 ```python
@@ -130,7 +130,7 @@ a_dict_of_lists['seven']
 
 Create a variety of data structures.
 1. Create a list of countries you would like to visit and assign it to a variable. Call this variables `countries`
-2. Create a nested list with one respresenting your favorite deserts and the other their prices. Call it, `my_weaknesses`. : )
+2. Create a nested list with one respresenting your favorite deserts and the other their prices. Call it, `my_weaknesses`. :)
 3. Create a dictionary with two key-value pairs. The first values should be your first list and second should be the second one. Assign it to a variable and name it however you like.
 4. Access the second key of your dictionary, print the result and then print its type.
 
@@ -160,7 +160,7 @@ Create a variety of data structures.
 
 ## 3.3 Tuples
 
-Tuple are lists' cousins except that they are immutable. This means that the content of a tuple cannot be altered. What you can do instead is to take the elements inside a tupe out by what is called unpacking. Unpacking means taking them out of the tuple and putting them into another container (e.g. a variable) or another data structure, e.g. a list. Tuples are usually denoted with parentheses `()` or with commas `,` separating their elements.
+Tuple are lists' cousins except that they are immutable. This means that the content of a tuple cannot be altered. What you can do instead is to take the elements inside a tuple out by what is called unpacking. Unpacking means taking them out of the tuple and putting them into another container (e.g. a variable) or another data structure, e.g. a list. Tuples are usually denoted with parentheses `()` or with commas `,` separating their elements.
 
 Let's evaluate some examples of this.
 

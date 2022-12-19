@@ -2,7 +2,7 @@
 
 > _"There are only two forces in the world, ~~the sword~~ dirty data and ~~the spirit~~ clean data. In the long run the ~~sword~~ dirty data will (not) always be conquered by the ~~spirit~~ clean data."_ ~ Napoleon CleanYourData
 
-![Gathering Data](pictures/11.png)
+![Gathering Data](..images/11.png)
 
 ## Outline for this Lesson
 
@@ -272,7 +272,7 @@ df.head() # show the data
 We now finally read in our data and can begin the cleaning process.
 
 
-![Gathering Data](pictures/12.png)
+![Gathering Data](../images/12.png)
 
 Let's look at some of the information about our dataframes.
 
@@ -890,7 +890,7 @@ df5[list(set_of_cols_left)].describe().T
 
 Since reviews seem to be standardize across Airbnb, we can evaluate them in combination. See the picture below.
 
-![reviews](pictures/reviews.png)
+![reviews](../images/reviews.png)
 
 
 ```python

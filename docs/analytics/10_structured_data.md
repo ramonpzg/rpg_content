@@ -263,7 +263,7 @@ fourth_series = pd.Series(data=pizzas)
 fourth_series
 ```
 
-Notice that what we got back was a 1-element pandas Series where the key `pizza` is now the index and the amount of pizzas we purchased are, still as a list, represented as 1 element. To fix this, let's explicitely call out the values of our `pizza` key.
+Notice that what we got back was a 1-element pandas Series where the key `pizza` is now the index and the amount of pizzas we purchased are, still as a list, represented as 1 element. To fix this, let's explicitly call out the values of our `pizza` key.
 
 
 ```python
@@ -357,7 +357,7 @@ pd.Series(some_set, index=list('abcdefg'))
 
 # 5. DataFrame's
 
-![dataframe](pictures/dataframes.png)
+![dataframe](../images/dataframes.png)
 
 You can think of a pandas DataFrame as a collection of Series with the difference being that all of the values in those Series will share the same index once they are in the DataFrame.
 

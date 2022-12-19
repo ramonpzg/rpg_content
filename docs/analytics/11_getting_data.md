@@ -39,7 +39,7 @@ These two formats, **Comma** and **Tab**, are still only a text file but they ar
 
 What makes these two files so similar is that they are both separated by something called delimiter. If you have a CSV or TSV file, try opening them in a plain text editor application (notepad for windows users and ) and notice what comes up.
 
-![csv](pictures/csv_file.png)
+![csv](../images/csv_file.png)
 
 Notice that in the example above, every value is separated by a comma and although the column headers can be found at the very top of the file (this is common practice) sometimes you might not even have them available. When we save files as TSV, CSV or with any other kind of delimiter, words with spaces in them will be wrapped around quotation marks to differentiate the spaces from the delimiter (which might be a space itself) in the data.
 
@@ -230,7 +230,7 @@ http://www.ifar.org/catalogues_raisonnes.php?alpha=&searchtype=artist&published=
 How to check whether there is a table in a website or not. There are probably plenty of ways to check whether there is a table in a website or not, so here are two immediate ones.
 
 1. See if there is a table-like shape in the website that you are interested in. This table would ideally have information in a shape that would fit into a pandas dataframe. For example,
-![table](pictures/table.png)
+![table](../images/table.png)
 2. The second option is to navigate to the website you are interested in and 
 
 If you have any issues with the `pd.read_html()` function, please check and see if you have the following packages installed and then try again.
