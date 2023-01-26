@@ -1,7 +1,7 @@
-site_name: Do f"{X}" with Data
+site_name: f"Do {X} with Data"
 repo_url: https://github.com/ramonpzg/rpg_content
-repo_name: RPG_Content
-copyright: Copyright &copy; 2022 Ramon Perez
+repo_name: RPG Content
+copyright: Copyright &copy; 2023 Ramon Perez
 
 
 # theme:
@@ -17,42 +17,45 @@ nav:
     - Python Installation: analytics/01_python_installation.md
     - Anaconda Installation: analytics/02_anaconda_installation.md
     - 03_git_installation: analytics/03_git_installation.md
-  - Product: explanation.md
-  - Data Engineering: tutorials.md
+    - 01 Jupyter Intro: analytics/01_jupyter_intro.md
+  # - Product: explanation.md
+  - Data Engineering:
+    - data_eng/index.md
+    - Intro to Data Engineering: data_eng/06_terminal.md
+  - Programming:
+    - programming/index.md
+    - 02 Types Vars: programming/02_types_vars.md
+    - 03 Data Structures: programming/03_structures.md
+    - 04 Tools: programming/04_tools.md
+    - 05 Control Flow: programming/05_control_flow.md
+    - 06 The Terminal: programming/06_terminal.md
+    - 07 Version Control: programming/07_version_control.md
+    - 08 Intermediate Python: programming/08_intermediate_python.md
   - Data Analytics:
     - analytics/index.md
     - Introduction: analytics/introduction.md
-    - 01_jupyter_intro: analytics/01_jupyter_intro.md
-    - 02_types_vars: analytics/02_types_vars.md
-    - 03_structures: analytics/03_structures.md
-    - 04_tools: analytics/04_tools.md
-    - 05_control_flow: analytics/05_control_flow.md
-    - 06_terminal: analytics/06_terminal.md
-    - 07_version_control: analytics/07_version_control.md
-    - 08_intermediate_python: analytics/08_intermediate_python.md
-    - 09_numerical_computing: analytics/09_numerical_computing.md
-    - 10_structured_data: analytics/10_structured_data.md
-    - 11_getting_data: analytics/11_getting_data.md
-    - 12_data_cleaning: analytics/12_data_cleaning.md
-    - 13_dataviz: analytics/13_dataviz.md
-    - 14_static_dataviz: analytics/14_static_dataviz.md
-    - 15_interactive_dataviz: analytics/15_interactive_dataviz.md
-    - 16_static_auctions: analytics/16_static_auctions.md
-    - 17_interactive_airbnb: analytics/17_interactive_airbnb.md
-    - 18_stats_intro: analytics/18_stats_intro.md
-    - 19_data_prep_p1: analytics/19_data_prep_p1.md
-    - 20_data_prep_p2: analytics/20_data_prep_p2.md
-    - 21_describing_data: analytics/21_describing_data.md
-    - 22_eda: analytics/22_eda.md
-    - README: analytics/README.md
-    # - index: analytics/index.md
-    - introduction: analytics/introduction.md
-    - json_tutorial: analytics/json_tutorial.md
-    - read_json: analytics/read_json.md
+    - 09 Numerical Computing: analytics/09_numerical_computing.md
+    - 10 Structured Data: analytics/10_structured_data.md
+    - 11 Getting Data: analytics/11_getting_data.md
+    - 12 Data Cleaning: analytics/12_data_cleaning.md
+    - 13 DataViz: analytics/13_dataviz.md
+    - 14 Static Data Viz: analytics/14_static_dataviz.md
+    - 15 Interactive DataViz: analytics/15_interactive_dataviz.md
+    - 16 Case Study 1: analytics/16_static_auctions.md
+    - 17 Case Study 2: analytics/17_interactive_airbnb.md
+    - 18 Statistics Intro: analytics/18_stats_intro.md
+    - 19 Case Study 3 - Part 1: analytics/19_data_prep_p1.md
+    - 20 Case Study 3 - Part 2: analytics/20_data_prep_p2.md
+    - 21 Describing Data: analytics/21_describing_data.md
+    - 22 Exploratory Data Analysis: analytics/22_eda.md
+    - index: analytics/index.md
+    # - introduction: analytics/introduction.md
+    # - json_tutorial: analytics/json_tutorial.md
+    # - read_json: analytics/read_json.md
   - Data Science: how-to-guides.md
-  - ML Engineering: reference.md
-  - DevOps Engineering: explanation.md
-  - Software Dev: explanation.md
+  # - ML Engineering: reference.md
+  # - DevOps: explanation.md
+  # - Software Dev: explanation.md
   - DataViz: explanation.md
 
 
@@ -122,7 +125,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/zillionare
+      link: https://github.com/ramonpzg/rpg_content
       name: Github
     - icon: material/email
-      link: "mailto:code@jieyu.ai"
+      link: "mailto:ramonpzg01@gmail.com"
