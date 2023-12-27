@@ -1,62 +1,14 @@
-site_name: f"Do {X} with Data"
 repo_url: https://github.com/ramonpzg/rpg_content
 repo_name: RPG Content
+
+site_name: f"Do {X} with Data"
+site_url: https://ramonpzg.github.io/rpg_content
+site_description: Educational content on programming, anything data related, ml engineering, and product development.
+site_author: Ramon Perez
+# site_image: http://www.w3.org/2000/svg
+# site_image_alt: Image explaining what f"Do {X} with Data" covers.
+
 copyright: Copyright &copy; 2023 Ramon Perez
-
-
-# theme:
-#   palette:
-#     scheme: slate
-#     primary: indigo
-
-nav:
-  - Home: index.md
-  - Set Up:
-    - setup/index.md
-    - Terminal: analytics/01_python_installation.md
-    - Python Installation: analytics/01_python_installation.md
-    - Anaconda Installation: analytics/02_anaconda_installation.md
-    - 03_git_installation: analytics/03_git_installation.md
-    - 01 Jupyter Intro: analytics/01_jupyter_intro.md
-  # - Product: explanation.md
-  - Data Engineering:
-    - data_eng/index.md
-    - Intro to Data Engineering: data_eng/06_terminal.md
-  - Programming:
-    - programming/index.md
-    - 02 Types Vars: programming/02_types_vars.md
-    - 03 Data Structures: programming/03_structures.md
-    - 04 Tools: programming/04_tools.md
-    - 05 Control Flow: programming/05_control_flow.md
-    - 06 The Terminal: programming/06_terminal.md
-    - 07 Version Control: programming/07_version_control.md
-    - 08 Intermediate Python: programming/08_intermediate_python.md
-  - Data Analytics:
-    - analytics/index.md
-    - Introduction: analytics/introduction.md
-    - 09 Numerical Computing: analytics/09_numerical_computing.md
-    - 10 Structured Data: analytics/10_structured_data.md
-    - 11 Getting Data: analytics/11_getting_data.md
-    - 12 Data Cleaning: analytics/12_data_cleaning.md
-    - 13 DataViz: analytics/13_dataviz.md
-    - 14 Static Data Viz: analytics/14_static_dataviz.md
-    - 15 Interactive DataViz: analytics/15_interactive_dataviz.md
-    - 16 Case Study 1: analytics/16_static_auctions.md
-    - 17 Case Study 2: analytics/17_interactive_airbnb.md
-    - 18 Statistics Intro: analytics/18_stats_intro.md
-    - 19 Case Study 3 - Part 1: analytics/19_data_prep_p1.md
-    - 20 Case Study 3 - Part 2: analytics/20_data_prep_p2.md
-    - 21 Describing Data: analytics/21_describing_data.md
-    - 22 Exploratory Data Analysis: analytics/22_eda.md
-    - index: analytics/index.md
-    # - introduction: analytics/introduction.md
-    # - json_tutorial: analytics/json_tutorial.md
-    # - read_json: analytics/read_json.md
-  - Data Science: how-to-guides.md
-  # - ML Engineering: reference.md
-  # - DevOps: explanation.md
-  # - Software Dev: explanation.md
-  - DataViz: explanation.md
 
 
 theme:
@@ -88,12 +40,67 @@ theme:
     text: Roboto
     # code: Roboto Mono
 
+
+
+
+
+
+nav:
+  - Home: 
+    - index.md
+    - Set Up:
+      - setup/index.md
+      - Terminal: analytics/01_python_installation.md
+      - Python Installation: analytics/01_python_installation.md
+      - Anaconda Installation: analytics/02_anaconda_installation.md
+      - 03_git_installation: analytics/03_git_installation.md
+      - 01 Jupyter Intro: analytics/01_jupyter_intro.md
+  # - Product: explanation.md
+  - DataEng:
+    - data_eng/index.md
+    - Intro to Data Engineering: data_eng/06_terminal.md
+  - Programming:
+    - programming/index.md
+    - 02 Types Vars: programming/02_types_vars.md
+    - 03 Data Structures: programming/03_structures.md
+    - 04 Tools: programming/04_tools.md
+    - 05 Control Flow: programming/05_control_flow.md
+    - 06 The Terminal: programming/06_terminal.md
+    - 07 Version Control: programming/07_version_control.md
+    - 08 Intermediate Python: programming/08_intermediate_python.md
+  - Analytics:
+    - analytics/index.md
+    - Introduction: analytics/introduction.md
+    - 09 Numerical Computing: analytics/09_numerical_computing.md
+    - 10 Structured Data: analytics/10_structured_data.md
+    - 11 Getting Data: analytics/11_getting_data.md
+    - 12 Data Cleaning: analytics/12_data_cleaning.md
+    - 13 DataViz: analytics/13_dataviz.md
+    - 14 Static Data Viz: analytics/14_static_dataviz.md
+    - 15 Interactive DataViz: analytics/15_interactive_dataviz.md
+    - 16 Case Study 1: analytics/16_static_auctions.md
+    - 17 Case Study 2: analytics/17_interactive_airbnb.md
+    - 18 Statistics Intro: analytics/18_stats_intro.md
+    - 19 Case Study 3 - Part 1: analytics/19_data_prep_p1.md
+    - 20 Case Study 3 - Part 2: analytics/20_data_prep_p2.md
+    - 21 Describing Data: analytics/21_describing_data.md
+    - 22 Exploratory Data Analysis: analytics/22_eda.md
+    - index: analytics/index.md
+  - DataSci: how-to-guides.md
+  - MLE: reference.md
+  - DevOps: explanation.md
+  - WebDev: explanation.md
+  - DataViz: explanation.md
+  - GenAI: explanation.md
+  - Ani-motion: explanation.md
+
+
 markdown_extensions:
   - pymdownx.highlight:
       linenums: true
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -113,9 +120,6 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - attr_list
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
   - md_in_html
 
 plugins:

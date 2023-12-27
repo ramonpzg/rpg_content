@@ -356,7 +356,7 @@ matrix_x
 
 Let's figure out how to select the following rows and columns from Matrix X.
 
-![alt](pictures/matrix_x_1.jpeg)
+![alt](../images//matrix_x_1.jpeg)
 
 
 ```python
