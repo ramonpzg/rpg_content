@@ -1,10 +1,10 @@
-# 04 Numerical Computing with NumPy
+# Numerical Computing with NumPy
 
 > "The important thing to remember about mathematics is not to be frightened" ~ Richard Dawkins
 
 ![da](https://miro.medium.com/max/800/0*o4HM8Tk9PHJUyuei.jpg)
 
-# Module 2 Continued...
+# Table of Contents
 
 __Outline for Module 2 Part 12:__
 
@@ -843,7 +843,7 @@ l1 + l2
 The correct way to do it with lists would be,
 
 
-```python
+```{python}
 l3 = []
 for idx in range(len(l1)):
     l3.append(l1[idx] + l2[idx])
