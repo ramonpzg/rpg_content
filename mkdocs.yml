@@ -1,7 +1,7 @@
 repo_url: https://github.com/ramonpzg/rpg_content
 repo_name: RPG Content
 
-site_name: f"Do {X} with Data"
+site_name: "Architecting Technology"
 site_url: https://ramonpzg.github.io/rpg_content
 site_description: Educational content on programming, anything data related, ml engineering, and product development.
 site_author: Ramon Perez
@@ -36,6 +36,7 @@ theme:
     - content.tabs.link
     - toc.follow
     - navigation.top
+    - content.code.copy
   font:
     text: Roboto
     # code: Roboto Mono
@@ -50,11 +51,11 @@ nav:
     - index.md
     - Set Up:
       - setup/index.md
-      - Terminal: analytics/01_python_installation.md
-      - Python Installation: analytics/01_python_installation.md
-      - Anaconda Installation: analytics/02_anaconda_installation.md
-      - 03_git_installation: analytics/03_git_installation.md
-      - 01 Jupyter Intro: analytics/01_jupyter_intro.md
+      - Terminal: 02_analytics/01_python_installation.md
+      - Python Installation: 02_analytics/01_python_installation.md
+      - Anaconda Installation: 02_analytics/02_anaconda_installation.md
+      - 03_git_installation: 02_analytics/03_git_installation.md
+      - 01 Jupyter Intro: 02_analytics/01_jupyter_intro.md
   # - Product: explanation.md
   - DataEng:
     - data_eng/index.md
@@ -69,35 +70,39 @@ nav:
     - 07 Version Control: programming/07_version_control.md
     - 08 Intermediate Python: programming/08_intermediate_python.md
   - Analytics:
-    - analytics/index.md
-    - Introduction: analytics/introduction.md
-    - 09 Numerical Computing: analytics/09_numerical_computing.md
-    - 10 Structured Data: analytics/10_structured_data.md
-    - 11 Getting Data: analytics/11_getting_data.md
-    - 12 Data Cleaning: analytics/12_data_cleaning.md
-    - 13 DataViz: analytics/13_dataviz.md
-    - 14 Static Data Viz: analytics/14_static_dataviz.md
-    - 15 Interactive DataViz: analytics/15_interactive_dataviz.md
-    - 16 Case Study 1: analytics/16_static_auctions.md
-    - 17 Case Study 2: analytics/17_interactive_airbnb.md
-    - 18 Statistics Intro: analytics/18_stats_intro.md
-    - 19 Case Study 3 - Part 1: analytics/19_data_prep_p1.md
-    - 20 Case Study 3 - Part 2: analytics/20_data_prep_p2.md
-    - 21 Describing Data: analytics/21_describing_data.md
-    - 22 Exploratory Data Analysis: analytics/22_eda.md
-    - index: analytics/index.md
+    - 02_analytics/index.md
+    - Introduction: 02_analytics/introduction.md
+    - 1 Numerical Computing: 02_analytics/01_numerical_computing.md
+    - 2 Structured Data: 02_analytics/02_structured_data.md
+    - 3 Getting Data: 02_analytics/03_getting_data.md
+    - 4 Data Cleaning: 02_analytics/04_data_cleaning.md
+    - 5 Statistics Intro: 02_analytics/07_stats_intro.md
+    - 6 Describing Data: 02_analytics/10_describing_data.md
+    - 7 Exploratory Data Analysis: 02_analytics/11_eda.md
+    - Case Study 1: 02_analytics/05_static_auctions.md
+    - Case Study 2: 02_analytics/06_interactive_airbnb.md
+    - Case Study 3 - Part 1: 02_analytics/08_data_prep_p1.md
+    - Case Study 3 - Part 2: 02_analytics/09_data_prep_p2.md
+    # - index: 02_analytics/index.md
   - DataSci: how-to-guides.md
   - MLE: reference.md
   - DevOps: explanation.md
   - WebDev: explanation.md
-  - DataViz: explanation.md
+  - DataViz: 
+    - 04_data_viz/index.md
+    - Introduction: 04_data_viz/introduction.md
+    - 01 Static Data Viz: 04_data_viz/01_static_dataviz.md
+    - 02 Interactive DataViz: 04_data_viz/02_interactive_dataviz.md
   - GenAI: explanation.md
-  - Ani-motion: explanation.md
+  - Ani-Motion: explanation.md
 
 
 markdown_extensions:
   - pymdownx.highlight:
       linenums: true
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -108,6 +113,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
   - admonition
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - toc:
       baselevel: 2
       permalink: true
