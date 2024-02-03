@@ -8,7 +8,7 @@ site_author: Ramon Perez
 # site_image: http://www.w3.org/2000/svg
 # site_image_alt: Image explaining what f"Do {X} with Data" covers.
 
-copyright: Copyright &copy; 2023 Ramon Perez
+copyright: Copyright &copy; 2024 Ramon Perez
 
 
 theme:
@@ -49,13 +49,13 @@ theme:
 nav:
   - Home: 
     - index.md
-    - Set Up:
-      - setup/index.md
-      - Terminal: 02_analytics/01_python_installation.md
-      - Python Installation: 02_analytics/01_python_installation.md
-      - Anaconda Installation: 02_analytics/02_anaconda_installation.md
-      - 03_git_installation: 02_analytics/03_git_installation.md
-      - 01 Jupyter Intro: 02_analytics/01_jupyter_intro.md
+  - Introduction:
+    - setup/index.md
+    - Terminal: 02_analytics/01_python_installation.md
+    - Python Installation: 02_analytics/01_python_installation.md
+    - Anaconda Installation: 02_analytics/02_anaconda_installation.md
+    - 03_git_installation: 02_analytics/03_git_installation.md
+    - 01 Jupyter Intro: 02_analytics/01_jupyter_intro.md
   # - Product: explanation.md
   - DataEng:
     - data_eng/index.md

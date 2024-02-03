@@ -16,7 +16,7 @@ By deafault, you will have Git available on your Mac, but if you would like to h
 
 2. Once the download finishes, open the **.dmg** package and follow the prompts to install Git.
 
-![Mac Git Installation](images/mac-git-install.png)
+<!-- ![Mac Git Installation](images/mac-git-install.png) -->
 
 3. Open a terminal and verify the installation was successful by typing **git --version**:
 
@@ -31,13 +31,13 @@ git version 2.15.0
 
 2. Run the installer and you should see the Git Setup wizard screen. You can leave most of the default options as they are, except where noted below. 
 
-![Windows Git Install](images/windows-git-install.png)
+<!-- ![Windows Git Install](images/windows-git-install.png) -->
 
  **Note:** Git Bash is an application for Microsoft Windows environments which provides an emulation layer for a Git command line experience. It is a useful option for users to interface with git through written commands. Click [here][git-bash] for information on using Git Bash. 
 
 Please choose the following option during installation:
 
-![Windows Install settings](images/windows-git-settings.png)
+<!-- ![Windows Install settings](images/windows-git-settings.png) -->
 
 Follow the Next and Finish prompts to complete the installation. 
 
