@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Git Installation
 
 
@@ -16,7 +20,7 @@ By deafault, you will have Git available on your Mac, but if you would like to h
 
 2. Once the download finishes, open the **.dmg** package and follow the prompts to install Git.
 
-<!-- ![Mac Git Installation](images/mac-git-install.png) -->
+![Mac Git Installation](../images/mac-git-install.png)
 
 3. Open a terminal and verify the installation was successful by typing **git --version**:
 
@@ -37,7 +41,7 @@ git version 2.15.0
 
 Please choose the following option during installation:
 
-<!-- ![Windows Install settings](images/windows-git-settings.png) -->
+![Windows Install settings](../images/windows-git-settings.png)
 
 Follow the Next and Finish prompts to complete the installation. 
 

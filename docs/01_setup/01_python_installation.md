@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Python Installation
 
 ![Python](../images/python_im.png)
@@ -67,7 +71,7 @@ Download Python from the from the Python website & Install it in your machine.
 
 3. Once dowloaded, open the **.exe** installer in your Downloads folder and follow the installation instructions. Make sure to check “Add Python 3.x to PATH” or otherwise you will have to do it explicitly. Click “Install Now” and after doing so, it will start installing Python on Windows.![Windows install screen](../images/windows-install-screen.png)
 
-4. After the installation is complete, click **Close**. The latest version of Python should now be installed. ![Windows install complete](images/windows-install-complete.png)
+4. After the installation is complete, click **Close**. The latest version of Python should now be installed. ![Windows install complete](../images/windows-install-complete.png)
 
 You can use the Command Prompt in Windows to invoke Python. Go to the start menu and open the Command Prompt application. Type _python_ in the command prompt to confirm that it was installed correctly. Then try entering the command to `print(“Hello World!”)` to run your first line of code.
 

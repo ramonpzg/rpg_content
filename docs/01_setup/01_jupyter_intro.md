@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Course and JupyterLab Intro
 
 ![data](https://media.giphy.com/media/3oKIPEqDGUULpEU0aQ/giphy.gif)
@@ -76,7 +80,8 @@ JupyterLab is an [Integrated Development Environment](https://en.wikipedia.org/w
 
 A silly metaphor to think about IDEs is that, IDEs are to programmers, data analysts, scientists, researcher, etc..., what a kitchen is to a chef, an indispensable piece to get things done.
 
-![jupyterlab](https://jupyterlab.readthedocs.io/en/latest/_images/interface_jupyterlab.png)
+![jupyterlab](https://jupyterlab.readthedocs.io/en/stable/_images/jupyterlab.png)
+
 **Source** - [https://jupyterlab.readthedocs.io](https://jupyterlab.readthedocs.io)
 
 Jupyter Lab is composed of cells and each cell has 3 states with the default state beign "code," and the other two being markdown and raw text.
@@ -134,24 +139,3 @@ IPython is an interactive environment for running python code. It allows you to 
         - You can also go to the pallette-looking command to your left called, `Commands`, and go to `HELP` > `Markdown Reference` for a quick tutorial
     * IPython
         - [Official Tutorial](https://ipython.readthedocs.io/en/stable/interactive/)
-
-## Examples
-
-
-```python
-# this is a code cell, look at the top where it says Code
-# type 5 + 7 and press Shift + Enter
-
-```
-
-
-```python
-# change this cell to markdown at the top, come back and type a hash (#) followed by This is my first notebook, then delete this comment
-
-```
-
-
-```python
-# change this cell to raw text format and type "Data is awesome" :) then press Shift + Enter
-
-```
