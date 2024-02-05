@@ -2,6 +2,10 @@
 sidebar_position: 1
 ---
 
+4
+11
+13
+
 # Welcome to Tech & Learn
 
 Let's discover **Docusaurus in less than 5 minutes**.
