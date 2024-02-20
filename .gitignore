@@ -1,3 +1,6 @@
 overrides
 nuxt_docs
 notebooks/
+node_modules/
+.docusaurus/
+.quarto/
