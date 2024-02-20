@@ -1,0 +1,2792 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Educational content on tech-related stuff.">
+      
+      
+        <meta name="author" content="Ramon Perez">
+      
+      
+        <link rel="canonical" href="https://ramonpzg.github.io/rpg_content/02_analytics/01_data_viz/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
+    
+    
+      
+        <title>01 data viz - Architecting Technology</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#welcome-to-data-visualization-in-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Architecting Technology" class="md-header__button md-logo" aria-label="Architecting Technology" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Architecting Technology
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 data viz
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="pink" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramonpzg/rpg_content" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RPG Content
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01_setup/" class="md-tabs__link">
+          
+  
+    
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03_data_eng/index.md" class="md-tabs__link">
+          
+  
+    
+  
+  Data Engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../10_programming/" class="md-tabs__link">
+          
+  
+    
+  
+  Programming
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  Analytics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../05_data_science/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  Data Science
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../07_mle/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  MLE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../06_devops/index.md" class="md-tabs__link">
+        
+  
+    
+  
+  DevOps
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../09_sw_dev/" class="md-tabs__link">
+        
+  
+    
+  
+  WebDev
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04_data_viz/" class="md-tabs__link">
+          
+  
+    
+  
+  DataViz
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  GenAI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../11_animotion/" class="md-tabs__link">
+        
+  
+    
+  
+  Ani-Motion
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Architecting Technology" class="md-nav__button md-logo" aria-label="Architecting Technology" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Architecting Technology
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramonpzg/rpg_content" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RPG Content
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../01_setup/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_setup/01_python_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_setup/02_anaconda_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaconda Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_setup/03_git_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03_git_installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_setup/01_jupyter_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Jupyter Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Engineering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Data Engineering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_data_eng/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_data_eng/06_terminal.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro to Data Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../10_programming/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Programming
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/02_types_vars.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Types Vars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/03_structures.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Data Structures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/04_tools.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/05_control_flow.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Control Flow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/06_terminal.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 The Terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/07_version_control.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 Version Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../10_programming/08_intermediate_python.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 Intermediate Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Analytics
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_numerical_computing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1 Numerical Computing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_structured_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2 Structured Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_getting_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 Getting Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_data_cleaning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Data Cleaning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_stats_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 Statistics Intro
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_describing_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 Describing Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_eda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Exploratory Data Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_static_auctions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case Study 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_interactive_airbnb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case Study 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_data_prep_p1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case Study 3 - Part 1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_data_prep_p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Case Study 3 - Part 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05_data_science/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Science
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../07_mle/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_devops/index.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../09_sw_dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WebDev
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../04_data_viz/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DataViz
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            DataViz
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_data_viz/introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_data_viz/01_static_dataviz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Static Data Viz
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_data_viz/02_interactive_dataviz/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Interactive DataViz
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../11_animotion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ani-Motion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#welcome-to-data-visualization-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+       Welcome to Data Visualization in Python 
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Welcome to Data Visualization in Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outline-4-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outline 4 Today
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-data-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Introduction to Data Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction to Data Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-is-dataviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 What is DataViz?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-quantitative-vs-qualitative" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Quantitative vs Qualitative
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-static-vs-interactive-visualizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Static vs Interactive Visualizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Static vs Interactive Visualizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-static-dataviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1 Static DataViz
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-interactive-dataviz" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2 Interactive DataViz
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-dos" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 Do's
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#donts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dont's
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-jupyter-labnotebook-and-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Jupyter Lab/Notebook and Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Jupyter Lab/Notebook and Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jupyter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jupyter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shift--enter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shift + Enter
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alt--enter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alt + Enter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alt + Enter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#some-key-concepts-in-python-well-need-4-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some Key Concepts in Python We'll Need 4 Today
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-work-through-some-examples-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Let's Work Through Some Examples Together
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Let's Work Through Some Examples Together">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-our-project-4-tonight" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Our Project 4 Tonight
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-data-well-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. The Data We'll Use
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-interrogating-the-data-one-visualization-at-a-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Interrogating the Data one Visualization at a Time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Interrogating the Data one Visualization at a Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example 6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#first-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Question
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 4
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 6
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 7
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Question 8
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Question 8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#answer_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Next Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#favourite-visualisation-websites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Favourite Visualisation Websites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-websites" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to...? Websites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-visualisation-experts-you-might-want-to-know-about" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Visualisation Experts You Might Want to Know About
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h2 id="welcome-to-data-visualization-in-python"><center> <h1>Welcome to Data Visualization in Python</h1> </center><a class="headerlink" href="#welcome-to-data-visualization-in-python" title="Permanent link">&para;</a></h2>
+<p><img alt="DataViz" src="images/beautiful.png" />  </p>
+<p><strong>Source:</strong> https://informationisbeautiful.net/beautifulnews/</p>
+<blockquote>
+<p>“There is no such thing as information overload. There is only bad design.” ~ Edward Tufte</p>
+</blockquote>
+<h3 id="outline-4-today">Outline 4 Today<a class="headerlink" href="#outline-4-today" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Introduction to Data Visualization<ul>
+<li>What is DataViz?</li>
+<li>Quantitative vs Qualitative</li>
+<li>Schema for Creating Visualizations</li>
+<li>Static vs Interactive DataViz</li>
+<li>Do's</li>
+<li>Dont's</li>
+</ul>
+</li>
+<li>Jupyter Lab/Notebook and Python</li>
+<li>Our Project for Tonight</li>
+<li>The Data We'll Use</li>
+<li>Interrogating the Data one Visualization at a Time</li>
+<li>Next steps</li>
+</ol>
+<h2 id="1-introduction-to-data-visualization">1. Introduction to Data Visualization<a class="headerlink" href="#1-introduction-to-data-visualization" title="Permanent link">&para;</a></h2>
+<p>Data visualisation, more than being part art and part science, is one of the key components of the data analytics cycle. People have different learning styles and to be able to convey information in a more accessible way, sometimes it is better to do so through visualisations rather than tables and written text. So..</p>
+<h3 id="11-what-is-dataviz">1.1 What is DataViz?<a class="headerlink" href="#11-what-is-dataviz" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"Data visualization is the graphical representation of information and data. By using visual elements like charts, graphs, and maps, data visualization tools provide an accessible way to see and understand trends, outliers, and patterns in data." ~ <a href="https://www.tableau.com/learn/articles/data-visualization">Tableau</a></p>
+</blockquote>
+<p>Data Visualization as a field of study has been on the rise for over many decades now --if not centuries-- and it is an exciting area to be a part of. Organisations such as the <a href="https://www.datavisualizationsociety.com/">Data Visualization Society</a>, <a href="https://www.freecodecamp.org/news/search?query=data%20visualization">FreeCodeCamp</a>, and others, have extensive information on how to go beyond simple data visualisation, should that be something that interests you. If you would like to read more about data visualisation and what you can do with it, check out this <a href="https://medium.com/nightingale">medium blog</a>.</p>
+<p>Python has a wide variety of visualisation tools available for static and interactive, quantitative and qualitative, time series and geographic data visualisation. Some of the most-widely used libraries for these purposes to date, are the following ones:</p>
+<ul>
+<li><a href="https://matplotlib.org/">matplotlib</a> --&gt; highly customisable and long-term contender in the dataviz arena</li>
+<li><a href="https://seaborn.pydata.org">seaborn</a> --&gt; beautiful data visualisation library that is easy to use and fast</li>
+<li><a href="https://bokeh.org">bokeh</a> --&gt; great (and beautiful) tool for interactive data visualisation</li>
+<li><a href="https://plotly.com/python/">plotly</a> --&gt; bokeh's top contender</li>
+<li><a href="https://altair-viz.github.io/gallery/index.html">altair</a> --&gt; beautiful data visualisation library based on the grammar of graphics philosophy</li>
+<li><a href="https://plotnine.readthedocs.io/en/stable/index.html">plotnine</a> --&gt; data visualisation library based on R's ggplot2</li>
+</ul>
+<h3 id="12-quantitative-vs-qualitative">1.2 Quantitative vs Qualitative<a class="headerlink" href="#12-quantitative-vs-qualitative" title="Permanent link">&para;</a></h3>
+<p>When we get to the data visualisation stage of the data analytics cycle, we should always keep in mind the nature of the data we would like to visualise. If we want to see relationships (correlations between variables) we might only choose quantitative variables for our visualisations. If we want to show a specific theme in our dataset, e.g. gender differences, customer type, or potential customer, we might just opt for visualising frequencies in qualitative data. In contrast, if we want to show the relationship of variables given a specific group in our dataset (e.g. income differences by gender), we would choose a combination of qualitative and quantitative variables.</p>
+<p>To give you a more concrete example, I have burrowed the following table from a book that I highly recommend if you want to really get started with data visualization, and that is, <em>"Fundamentals of data visualization: A primer on making informative and compelling figures"</em> by Claus O. Wilke.</p>
+<p><img alt="data_var_types" src="images/var_types.png" /></p>
+<p><strong>Source:</strong> Wilke, C. O. (2019). <em>Fundamentals of data visualization: A primer on making informative and compelling figures.</em> Sebastopol, CA: O'Reilly Media.</p>
+<p>Now that we are aware of the subtle differences in data visualization, how do we know which visualisation to create with the data we have? The answer is that, it will depend on the context of your task and on how much information you would like to convey in your visualisation.</p>
+<h3 id="13-static-vs-interactive-visualizations">1.3 Static vs Interactive Visualizations<a class="headerlink" href="#13-static-vs-interactive-visualizations" title="Permanent link">&para;</a></h3>
+<p>An important aspect to keep in mind is when creating visualizations is whether we should represent our data in a static or interactive format. As analysts, we should always ask ourselves, will our message reach our audience better if they were able to interact with the visualisation? The reason behind this can be captured in a very famous quote by Benjamin Franklin.</p>
+<blockquote>
+<p>"Tell me and I forget. Teach me and I remember. Involve me and I learn." ~ Benjamin Franklin</p>
+</blockquote>
+<p>If the goal of our visualisations is to teach something to our audience, chances are that allowing them to interact with our visualisation will do just that. Let's talk a bit more about static and interactive visualisations.</p>
+<h4 id="131-static-dataviz">1.3.1 Static DataViz<a class="headerlink" href="#131-static-dataviz" title="Permanent link">&para;</a></h4>
+<p>Static data visualisations are those meant to show one or several facts about the data in a specific way. They help us convey a message and are often used closely with other narratives. For example, the New York Times is one of the most famouss news agencies in the world not just for the top content they manage to create and provide to the masses, but also for the beautiful and informative visualisations one can find in their work.</p>
+<p>Static visualisations are also often embedded into inforgraphics to carry a message even further. Think about the graphs that are displayed in broshures that tell us to buy a fragance or a particular type of cutlery alongside a statistic, some often say "75% of those who purchased these products have experienced...blah blah blah." Watch out for those! :)</p>
+<h4 id="132-interactive-dataviz">1.3.2 Interactive DataViz<a class="headerlink" href="#132-interactive-dataviz" title="Permanent link">&para;</a></h4>
+<p>Interactive data visualisations tell different stories while letting the users pick which one they would like to see or understand better as they evaluate the information available. These kinds of visualisations can be very powerful tools not only to convey different messages at scale but also to provide top-notch educational content.</p>
+<p>Involving your audience through interactive visualisations can be a much more involved process though. A static visualisation can be saved and shared with many in a matter of minutes. Interactive visualisations, on the other hand, might require a web application to work and be displayed from, making it more difficult to show it to people on the go. Dashboards and other tools require a bit more work to be put together but can have a lot useful interactivity in them.</p>
+<h3 id="14-dos">1.4 Do's<a class="headerlink" href="#14-dos" title="Permanent link">&para;</a></h3>
+<p>When creating data visualisations, it is important to keep in mind the following Do's.</p>
+<ul>
+<li>Label your axes where appropriate</li>
+<li>Add a title</li>
+<li>Use color appropriately. Showcase what you need, not every data point</li>
+<li>Use full axis and maintain consistency with different graphs shown in parallel</li>
+<li>Ask others for their opinion</li>
+<li>Pass the squint test (blurry viz)</li>
+</ul>
+<h3 id="donts">Dont's<a class="headerlink" href="#donts" title="Permanent link">&para;</a></h3>
+<p>Just as there are many <strong>Do's</strong> in data visualisations, there are also many <strong>DONT's</strong>. Let go over a few of them together.</p>
+<ol>
+<li>
+<p>Don't use too much color<br />
+<img src="https://clauswilke.com/dataviz/pitfalls_of_color_use_files/figure-html/popgrowth-US-rainbow-1.png" alt="bad pie" width="400"/>   </p>
+</li>
+<li>
+<p>Don't use unmatching percentages<br />
+<img src="http://livingqlikview.com/wp-content/uploads/2017/04/Worst-Data-Visualizations-02.jpg" alt="bad percentages" width="400"/>  </p>
+</li>
+<li>
+<p>Don't try to put everything in one graph<br />
+<img src="http://livingqlikview.com/wp-content/uploads/2017/04/Worst-Data-Visualizations-07.jpg" alt="bad pie" width="400"/>  </p>
+</li>
+<li>
+<p>Trend lines need time not categories<br />
+<img src="http://livingqlikview.com/wp-content/uploads/2017/04/Worst-Data-Visualizations-03.jpg" alt="bad lines" width="400"/>  </p>
+</li>
+<li>
+<p>Don't make your chart data unreadible<br />
+<img src="http://livingqlikview.com/wp-content/uploads/2017/04/Worst-Data-Visualizations-04.jpg" alt="bad text" width="400"/>  </p>
+</li>
+<li>
+<p>Don't make no sense<br />
+<img src="https://i.insider.com/51cb1c3e69bedd713300000e?width=1200" alt="bad sense" width="400"/>  </p>
+</li>
+<li>
+<p>Don't deceive your audience with different intervals and axes<br />
+<img src="https://i.insider.com/51cb25fa69beddcd4f000005?width=1200" alt="bad intervals" width="400"/>  </p>
+</li>
+<li>
+<p>Axes betrayal<br />
+<img src="https://i.insider.com/51cb2721eab8ea1d33000004?width=1200" alt="bad percentages" width="400"/>  </p>
+</li>
+</ol>
+<p><strong>Source 1:</strong> taken from Fundamentals of Data Visualization by Claus O. Wilke. Data source is US Census Bureau<br />
+<strong>Source 2:</strong> Figures 2, 3, 4, and 5 were taken from <a href="http://livingqlikview.com/the-9-worst-data-visualizations-ever-created/">QlikView</a><br />
+<strong>Source 3:</strong> Figures 6, 7, and 8 were taken from <a href="https://www.businessinsider.com.au/the-27-worst-charts-of-all-time-2013-6?r=US&amp;IR=T#did-anyone-learn-anything-by-looking-at-this-pseudo-pie-chart-what-do-these-colors-even-mean-why-is-it-divided-into-quadrants-well-never-know-1">Business Insider</a></p>
+<h2 id="2-jupyter-labnotebook-and-python">2. Jupyter Lab/Notebook and Python<a class="headerlink" href="#2-jupyter-labnotebook-and-python" title="Permanent link">&para;</a></h2>
+<h3 id="jupyter">Jupyter<a class="headerlink" href="#jupyter" title="Permanent link">&para;</a></h3>
+<p>JupyterLab is an <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">Integrated Development Environment</a> created by the <a href="https://jupyter.org/">Jupyter Project</a>. It allows you to combine different tools that are paramount for a good coding workflow. For example, you can have the terminal, a Jupyter notebook, and a markdown file for note-taking/documenting your work, as well as others, opened at the same time to improve your workflow as you write code (see image below).</p>
+<p><img alt="jupyterlab" src="https://jupyterlab.readthedocs.io/en/stable/_images/jupyterlab.png" />
+<strong>Source</strong> - <a href="https://jupyterlab.readthedocs.io">https://jupyterlab.readthedocs.io</a></p>
+<p>To run code you will use the following two commands:</p>
+<blockquote>
+<h2 id="shift--enter">Shift + Enter<a class="headerlink" href="#shift--enter" title="Permanent link">&para;</a></h2>
+</blockquote>
+<p>and</p>
+<blockquote>
+<h2 id="alt--enter">Alt + Enter<a class="headerlink" href="#alt--enter" title="Permanent link">&para;</a></h2>
+</blockquote>
+<p>The first will run the cell and take you to the next one. If there is no cell underneath the one you just ran, it will insert a new one for you. The second one will run the cell and insert a new one below automatically. Alternatively, you can also run the cells using the play (▶︎) button at the top or with the <em>Run menu</em> on the top left-hand corner.</p>
+<p>Anything that follows a hash <code>#</code> sign is a comment and will not be evaluated by Python. They are useful for documenting your code and letting others know what is happening with every line of code or with every cell.</p>
+<p>To check the information of a package, function, method, etc., use <code>?</code> or <code>??</code> at the begining or end of such element, and it will provide you with a lot of information about it.</p>
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<p>Python is a general-purpose programming language that allows us to create programs, analyse data, create websites, create applications, and many other cool things. It is free and open-source, which means that anyone can contribute to its development and help make this language an even better one. This latter fact, along with the great readability of the language, are (to your host) two of the major contributing factors of Python's popularity.</p>
+<p>Python can be thought of as a person, we are very cool the way we are but to interact more efficiently we make use of "add-ons", and thus, so does Python. These add-ons may be clothes, shoes, accessories, slang words, and other physical objects such as cars, houses, boats, etc. In Python, our add-ons become additional programs other people have created in order to make a specific workflow easier.</p>
+<h4 id="some-key-concepts-in-python-well-need-4-today">Some Key Concepts in Python We'll Need 4 Today<a class="headerlink" href="#some-key-concepts-in-python-well-need-4-today" title="Permanent link">&para;</a></h4>
+<p><strong>Data Types</strong></p>
+<ol>
+<li>Strings --&gt; Text or written data. e.g. "this is a string"</li>
+<li>Integers --&gt; numbers without decimal places. e.g. 1, 2, 3, 4, 5, 6</li>
+<li>Floats --&gt; numbers with decimal places. e.g. 3.5, 2.06, 7.9, 4.1</li>
+<li>Dates --&gt; time-related object. e.g. 19-March-2020 18:00, 20-March-2020 12:30</li>
+<li>Boolean --&gt; logical value that can be <code>True</code> or <code>False</code> and 1 or 0, respectively</li>
+</ol>
+<p><strong>Data Structures</strong>
+1. Dataframe --&gt; spreadshee-like object (literally), with rows and columns
+2. Series or Array --&gt; a row or column in a spreadsheet, or a combination of the two</p>
+<h2 id="lets-work-through-some-examples-together">Let's Work Through Some Examples Together<a class="headerlink" href="#lets-work-through-some-examples-together" title="Permanent link">&para;</a></h2>
+<h4 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">&para;</a></h4>
+<p>Type your name inside quotation marks in the cell below and press <code>Shift + Enter</code>.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Type in the cell below the word <code>name</code> not inside quotation marks</li>
+<li>Put the <code>=</code> sign right next to it</li>
+<li>Type your name inside quotation marks to the right of the <code>=</code> sign</li>
+<li>Press <code>Shift + Enter</code></li>
+</ul>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="example-3">Example 3<a class="headerlink" href="#example-3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Type in the cell below the word <code>name</code> not inside quotation marks</li>
+<li>Put the <code>=</code> sign right next to it</li>
+<li>Type your name inside quotation marks to the right of the <code>=</code> sign</li>
+<li>Press <code>Shift + Enter</code></li>
+</ul>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="example-4">Example 4<a class="headerlink" href="#example-4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Subtract five from ten in the cell below</li>
+<li>Press <code>Shift + Enter</code></li>
+</ul>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="example-5">Example 5<a class="headerlink" href="#example-5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Add nine to five in the cell below</li>
+<li>Press <code>Shift + Enter</code></li>
+</ul>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h2 id="3-our-project-4-tonight">3. Our Project 4 Tonight<a class="headerlink" href="#3-our-project-4-tonight" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>The Goal: To Analyse and Improve our Workout Habits</p>
+</blockquote>
+<p>Say you have always exercised at least 5 days per week, or that, since last year, your New Year's resolution was to exercise for at least 5 days a week throughout the entire year. This being a completely novel endeavor for you, something no one else picks during New Year's (😎), you decide it would good to also track your progress throughout the year to understand what your workout routines and habits look like. You also want to come up with a a few hypotheses to test using your own data, we will do that another time though.</p>
+<p>Here is a picture of me on day 1</p>
+<p><img alt="day1" src="https://media.giphy.com/media/13Lwn87rxZSUVi/giphy.gif" /></p>
+<p>also me on day 2</p>
+<p><img alt="day2" src="https://media.giphy.com/media/ewelN8qzxQqNG/giphy.gif" /></p>
+<h2 id="4-the-data-well-use">4. The Data We'll Use<a class="headerlink" href="#4-the-data-well-use" title="Permanent link">&para;</a></h2>
+<p>Now that we have our task defined, we can move on to gathering the data we will need for our project. In my case, I have a Garmin watch and I went through the following steps to extract a comma separated values file from it.</p>
+<ul>
+<li>Go to Garmin <a href="https://connect.garmin.com/signin"><strong>Garmin Connect</strong></a></li>
+<li>Sign in with your username and password</li>
+<li>Go to the activities section and click on All Activities</li>
+<li>Exporting the data gets a bit tricky here because Garmin will only export items that have already loaded, so in order to get all of your data, scroll all the way down to the very end of all of your activities.</li>
+<li>Once you reach the last one, click on the Export CSV button at the top right hand corner. You will see a Activities.csv file in your downloads folder.
+<strong>NOTE:</strong> Garmin tracks much more data than what you will download from Garmin Connect but the format is not as user-friendly as what you would get using these steps.</li>
+</ul>
+<p>Depending on which smartwatch or smartphone you have, there will be different ways to access your data.</p>
+<h2 id="5-interrogating-the-data-one-visualization-at-a-time">5. Interrogating the Data one Visualization at a Time<a class="headerlink" href="#5-interrogating-the-data-one-visualization-at-a-time" title="Permanent link">&para;</a></h2>
+<p>The first thing we want to do is to import into our session, some external packages available in the Python ecosystem.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>We will then read in the data using the pandas package we imported above and assign it to a variable. You can thing of a variable as a column in Excel, a container, or a bucket, that will hold, and give a name to, whathever piece of information you are working with.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;workouts_data.csv&#39;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Now that we have loaded our data into memory, we can examine it by viewing a few rows of it using what is called a method. You can think of methods as the behavior of an object in Python. For example, the behavior of a stove is that it gets hot if we turn it on and it is cold if it is off. The behavior of our variable <code>df</code> when we apply the method <code>.head()</code> is that it returns a small view of our data for us.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="example-6">Example 6<a class="headerlink" href="#example-6" title="Permanent link">&para;</a></h4>
+<p>Try using the method <code>.tail()</code> with our variable <code>df</code> in the cell below.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="first-question">First Question<a class="headerlink" href="#first-question" title="Permanent link">&para;</a></h4>
+<p><strong>Regardless of the year, what is the average amount of calories that I tend to burn per month?</strong></p>
+<p>Things to keep in mind:
+1. We need a measure of calories in a numerical format
+2. We need a measure of time in terms of months</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># bare bones visual display</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># agregation of one measure</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean(calories)&#39;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="c1"># adding useful elements to our chart</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_line</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">,</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean(calories)&#39;</span><span class="p">,</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean(calories)&#39;</span><span class="p">]</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Average Calories Burned per Month&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer">Answer<a class="headerlink" href="#answer" title="Permanent link">&para;</a></h4>
+<p>It seems that October is the month of the year where I burn the most amount of calories with 284.81 on average per day.</p>
+<p><img alt="hell_yeah" src="https://media.giphy.com/media/jErnybNlfE1lm/giphy.gif" /></p>
+<p>Let's untagle what just happened.</p>
+<p>A chart is a layered representation of information where we need:
+- <strong><code>data</code></strong> and,
+- a way to <strong><code>represent</code></strong> the information we want to visualize from the data and, 
+- a way to <strong><code>encode</code></strong> what we are interested in to the elements of the chart.</p>
+<p>In other words:
+- <code>alt</code> is the abbreviation of the name of the python package we are using to create the visualization and from it we can create a
+- <code>Chart</code> object to which we get to pass our variable containing the data called <code>df</code>. To represent the data we want we use
+- <code>mark_line()</code> which helps us visualize our data of interest as a line instead of a circle, square, and what not. We then
+- <code>encode</code> the information we are interested in into
+- <code>x</code> (the months) and
+- <code>y</code> (the average amount of calories) coordinates. Lastly, our chart needs
+- <code>properties</code> such as a title to convey the appropriate message.</p>
+<h3 id="question-2">Question 2<a class="headerlink" href="#question-2" title="Permanent link">&para;</a></h3>
+<p><strong>Are the kilometers I run corelated with the amount of calories I burn?</strong></p>
+<p>Things to keep in mind:
+- We need two quantitative measures.
+- They don't necesarily need to be in the same scale (e.g. kilometers vs miles, farenheit to celcius) but sometimes that is helpful.
+- We can plot to quantitative variables using points or circles. This type of visualization is called a scatter plot.</p>
+<blockquote>
+<p><em>"A scatter plot is a type of plot or mathematical diagram using Cartesian coordinates to display values for typically two variables for a set of data. If the points are coded (color/shape/size), one additional variable can be displayed."</em> ~ <a href="https://en.wikipedia.org/wiki/Scatter_plot">Wikipedia</a></p>
+</blockquote>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_1">Answer<a class="headerlink" href="#answer_1" title="Permanent link">&para;</a></h4>
+<p>They are are <strong>indeed</strong> positively correlated.</p>
+<p><img alt="indeed" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fs2.quickmeme.com%2Fimg%2F8f%2F8f1698edb1bc274a9111cb1fb38b72c4401828685a458f714f052f875dde16e5.jpg&amp;f=1&amp;nofb=1" /></p>
+<p>What is correlation anyways?</p>
+<blockquote>
+<p>"In statistics, correlation is the degree to which two or more attributes or measurements on the same group of elements show a tendency to vary together." ~ <a href="https://www.dictionary.com/browse/correlation">Dictionary.com</a></p>
+</blockquote>
+<h3 id="question-3">Question 3<a class="headerlink" href="#question-3" title="Permanent link">&para;</a></h3>
+<p>Can we explore the calories vs distance further? More specifically,</p>
+<ol>
+<li>Can we zoom into the most productive workouts?</li>
+<li>Can we split all workouts by the time of day in which they occured?</li>
+</ol>
+<p>Things to keep in mind:
+- To answer this questions we could take advantage of interactivity in our chart to change the story as we go, in addition
+- We will need to split our quantitative variables by a categorical variable.
+- If you recall from the table above, categorical variables can be Nominal (no order is implied) and Ordinal (order matters). For example, gender is a nominal variable (female, male, other), the temperature on food is ordinal (hot, mild, cold).</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span>
+<span class="normal"><a href="#__codelineno-16-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="c1"># adding interactivity</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span>
+<span class="normal"><a href="#__codelineno-17-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="c1"># adding interactivity and a categorical variable</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;time_day&#39;</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="c1"># adding interactivity, a categorical variable and tooltip</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;time_day&#39;</span><span class="p">,</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a>    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">,</span> <span class="s1">&#39;activity_type&#39;</span><span class="p">,</span> <span class="s1">&#39;time_day&#39;</span><span class="p">]</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a>    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Calories Burned vs Distance by Time of Day&#39;</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="p">)</span><span class="o">.</span><span class="n">interactive</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_2">Answer<a class="headerlink" href="#answer_2" title="Permanent link">&para;</a></h4>
+<p>By splitting the data by the categorical variable <code>time_of_day</code> we were able to separate the distance run by the time of the day in which it occured. This allowed us to figure out that the workouts in which the most calories were burned were in the afternoon, followed by the evening.</p>
+<h3 id="question-4">Question 4<a class="headerlink" href="#question-4" title="Permanent link">&para;</a></h3>
+<p>Let's make things a bit more interesting, what is the relationship between calories &amp; distance and calories &amp; temperature. Also, it would be great to see the temperature split by the buckets (e.g. hot, normal, hot).</p>
+<p>Things to keep in mind:
+- We can also concatenate chart that share and axis. In our case, we want two charts sharing the calories in the y axis.
+- Out x axes will contain our two other quantitative variables.
+- We will need to split our variables by a categorical variable again.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">interval</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">zoom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="n">colorscale</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Cold (&lt;14C)&#39;</span><span class="p">,</span> <span class="s1">&#39;Normal (14-23C)&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot (&gt;23C)&#39;</span><span class="p">],</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>                       <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">])</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span>
+<span class="normal"><a href="#__codelineno-21-5">5</a></span>
+<span class="normal"><a href="#__codelineno-21-6">6</a></span>
+<span class="normal"><a href="#__codelineno-21-7">7</a></span>
+<span class="normal"><a href="#__codelineno-21-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="n">chart1</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a>    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="s1">&#39;temp_buckets&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;lightgray&#39;</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">colorscale</span><span class="p">),</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a>    <span class="n">tooltip</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;activity_type&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">]</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a>    <span class="n">selection</span><span class="o">=</span><span class="n">interval</span>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="n">chart1</span> <span class="o">|</span> <span class="n">chart1</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_3">Answer<a class="headerlink" href="#answer_3" title="Permanent link">&para;</a></h4>
+<p>A quick glanse at the data tells us that workouts tend to happen mostly during hot days with very few instances happening below 15 C. In addition, the longest distance run and the most amount of calories burned happened at 23C.</p>
+<p>We can also see that the amount of workouts, and also their intensity, diminish significantly above 30C.</p>
+<p>My favorite workout weathers be like 🥵 </p>
+<p><img alt="hot" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2F24%2F9e%2Fc4%2F249ec4f0b9312b25eaf22551c3b1ba47--art-installations-installation-art.jpg&amp;f=1&amp;nofb=1" /></p>
+<h3 id="question-5">Question 5<a class="headerlink" href="#question-5" title="Permanent link">&para;</a></h3>
+<p>What does the frequency of my workouts look like by the day of the week?</p>
+<p>Things to keep in mind:
+- We need a categorical variable with the days of the week.
+- We need to count how many times they appear in out dataset.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span>
+<span class="normal"><a href="#__codelineno-23-7">7</a></span>
+<span class="normal"><a href="#__codelineno-23-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">,</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;count()&#39;</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>    <span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>    <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Frequency of Workouts by Day of The Week&quot;</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_4">Answer<a class="headerlink" href="#answer_4" title="Permanent link">&para;</a></h4>
+<p>It seems that most of my workouts take place on Thursdays and followed by Mondays.</p>
+<p>You know what they say on Th(irst)days</p>
+<p><img alt="thirsday" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flaughtard.com%2Fwp-content%2Fuploads%2F2017%2F02%2Ff538f78cf2e7e59db9ba5242f5653539.jpg&amp;f=1&amp;nofb=1" /></p>
+<h3 id="question-6">Question 6<a class="headerlink" href="#question-6" title="Permanent link">&para;</a></h3>
+<p>What happens to my average heart rate as I run further and further? Better yet, can I view this alongside the frequency of workouts between the different times of the day at which I worked out?</p>
+<p>Things to keep in mind:
+- We need a mix of variables in different charts, concatenated with each other
+- We need to connect several filters together</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-24-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-24-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-24-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-24-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-24-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-24-10">10</a></span>
+<span class="normal"><a href="#__codelineno-24-11">11</a></span>
+<span class="normal"><a href="#__codelineno-24-12">12</a></span>
+<span class="normal"><a href="#__codelineno-24-13">13</a></span>
+<span class="normal"><a href="#__codelineno-24-14">14</a></span>
+<span class="normal"><a href="#__codelineno-24-15">15</a></span>
+<span class="normal"><a href="#__codelineno-24-16">16</a></span>
+<span class="normal"><a href="#__codelineno-24-17">17</a></span>
+<span class="normal"><a href="#__codelineno-24-18">18</a></span>
+<span class="normal"><a href="#__codelineno-24-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="n">interval</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">selection_interval</span><span class="p">(</span><span class="n">encodings</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="n">chart</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;calories&#39;</span><span class="p">,</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6"></a>    <span class="n">color</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">condition</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="s1">&#39;time_day&#39;</span><span class="p">,</span> <span class="n">alt</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="s1">&#39;lightgray&#39;</span><span class="p">)),</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8"></a>    <span class="n">selection</span><span class="o">=</span><span class="n">interval</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="p">)</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10"></a>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11"></a><span class="n">hist</span> <span class="o">=</span> <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;count()&#39;</span><span class="p">,</span>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;time_day&#39;</span><span class="p">,</span>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14"></a>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;time_day&#39;</span>
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15"></a><span class="p">)</span><span class="o">.</span><span class="n">transform_filter</span><span class="p">(</span>
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16"></a>    <span class="n">interval</span>
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17"></a><span class="p">)</span>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18"></a>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19"></a><span class="n">chart</span> <span class="o">&amp;</span> <span class="n">hist</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_5">Answer<a class="headerlink" href="#answer_5" title="Permanent link">&para;</a></h4>
+<p>Nightly workouts only surpass the afternoon ones at a small interval of time. Morning workouts are definitely not a thing for me.</p>
+<h3 id="question-7">Question 7<a class="headerlink" href="#question-7" title="Permanent link">&para;</a></h3>
+<p>Where have I done the most, the least, and all in between, Ks during a workout.</p>
+<p>Things to keep in mind:
+- We need the distribution of a quantitative variable, split by the title of a workout.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span>
+<span class="normal"><a href="#__codelineno-25-6">6</a></span>
+<span class="normal"><a href="#__codelineno-25-7">7</a></span>
+<span class="normal"><a href="#__codelineno-25-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_boxplot</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>    <span class="n">x</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s1">&#39;title:N&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">alt</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">labelAngle</span><span class="o">=-</span><span class="mi">45</span><span class="p">)),</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;distance:Q&#39;</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span>
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>    <span class="n">width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a>    <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7"></a>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Distance Distribution of Workouts per Location and Type&quot;</span>
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_6">Answer<a class="headerlink" href="#answer_6" title="Permanent link">&para;</a></h4>
+<p>Sydney is definitely pushing my limits, but KC and Santiago have kept me going the longest and farthest.</p>
+<h3 id="question-8">Question 8<a class="headerlink" href="#question-8" title="Permanent link">&para;</a></h3>
+<p>What does the distribution of my workouts look like when I split them by the quarter of the year in which each workout took place?</p>
+<p>Things to keep in mind:
+- We need the distribution of a quantitative variable, split by the quarter of the year in which the workout took place.</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span>
+<span class="normal"><a href="#__codelineno-26-3">3</a></span>
+<span class="normal"><a href="#__codelineno-26-4">4</a></span>
+<span class="normal"><a href="#__codelineno-26-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;calories:Q&#39;</span><span class="p">,</span>
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;activity_type&#39;</span><span class="p">,</span>
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a>    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;quarter:O&#39;</span>
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="answer_7">Answer<a class="headerlink" href="#answer_7" title="Permanent link">&para;</a></h4>
+<p>Most of what I do (or track for that matter) is running, whether outside or on a threadmill.</p>
+<h2 id="6-next-steps">6. Next Steps<a class="headerlink" href="#6-next-steps" title="Permanent link">&para;</a></h2>
+<p>Here is a non-exhaustive list of things to keep in mind when creating visualisations with data. This list was created by Nicolas P. Rougier and it can be found in his article called, "<em><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833">Ten Simple Rules for Better Figures</a></em>".</p>
+<ul>
+<li>Rule 1: Know Your Audience</li>
+<li>Rule 2: Identify Your Message</li>
+<li>Rule 3: Adapt the Figure to the Support Medium</li>
+<li>Rule 4: Captions Are Not Optional</li>
+<li>Rule 5: Do Not Trust the Defaults</li>
+<li>Rule 6: Use Color Effectively</li>
+<li>Rule 7: Do Not Mislead the Reader</li>
+<li>Rule 8: Avoid “Chartjunk”</li>
+<li>Rule 9: Message Trumps Beauty</li>
+<li>Rule 10: Get the Right Tool</li>
+</ul>
+<p>We have learned a lot in this lesson so let's summarise a few of the most important concepts.</p>
+<ul>
+<li>Data visualisation is great for exploring our datasets</li>
+<li>It allows us to see interesting patterns in the data that might not be visible upon first inspection</li>
+<li>Satatic graphs are great for telling a story from one angle</li>
+<li>Interactive visualisations are great for involving the audience with the message we are trying to convey as well as for ourselves to change the story as we please</li>
+<li>Python has excelent tools for visualisation and <a href="https://altair-viz.github.io/index.html">Altair</a> is just one of them</li>
+</ul>
+<p>To feed your curiosity.</p>
+<h4 id="python_1">Python<a class="headerlink" href="#python_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="http://holoviews.org/index.html">holoviews</a> --&gt; similar to bokeh but easier to use</li>
+<li><a href="https://datashader.org/">datashader</a> --&gt; great for massive datasets</li>
+</ul>
+<h4 id="favourite-visualisation-websites">Favourite Visualisation Websites<a class="headerlink" href="#favourite-visualisation-websites" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="flowingdata.com">FlowingData</a></li>
+<li><a href="https://www.informationisbeautifulawards.com/">Information is Beautiful</a></li>
+<li><a href="https://eagereyes.org/">eagereyes</a></li>
+</ul>
+<h4 id="how-to-websites">How to...? Websites<a class="headerlink" href="#how-to-websites" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="https://python-graph-gallery.com/">Python Graph Gallery</a></li>
+<li><a href="https://www.drawingfromdata.com">Drawing from Data</a></li>
+</ul>
+<h4 id="data-visualisation-experts-you-might-want-to-know-about">Data Visualisation Experts You Might Want to Know About<a class="headerlink" href="#data-visualisation-experts-you-might-want-to-know-about" title="Permanent link">&para;</a></h4>
+<ul>
+<li><a href="http://tulpinteractive.com/">Jan Willem</a></li>
+<li><a href="https://christianlaesser.com/">Christian Laesser</a></li>
+<li><a href="https://www.visualisingdata.com/">Andy Kirk</a></li>
+<li><a href="https://www.edwardtufte.com/tufte/">Eduard Tufte</a></li>
+<li><a href="http://albertocairo.com/">Alberto Cairo</a></li>
+</ul>
+<p><strong>For your next learning steps you could:</strong>
+- solidify python programming fundamentals
+- learn how to clean and wrangle data prior to analysing it
+- complete a project
+- ask for feedback
+- repeat</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Ramon Perez
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/ramonpzg/rpg_content" target="_blank" rel="noopener" title="Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:ramonpzg01@gmail.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20 8-8 5-8-5V6l8 5 8-5m0-2H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.tabs", "navigation.instant", "content.tabs.link", "toc.follow", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>
