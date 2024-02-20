@@ -9,11 +9,11 @@ within Markdown files.
 
 ### Built-in meta plugin
 
-The built-in meta plugin allows to __set front matter per folder__, which is
-especially handy to ensure that all pages in a folder use specific templates or 
+The built-in meta plugin allows to **set front matter per folder**, which is
+especially handy to ensure that all pages in a folder use specific templates or
 tags. Add the following lines to `mkdocs.yml`:
 
-``` yaml
+```yaml
 plugins:
   - meta
 ```
@@ -24,18 +24,17 @@ plugins:
 
 The following configuration options are available:
 
-``` yaml
+```yaml
 plugins:
-    - meta:
-        meta_file: '**/.meta.yml' # (1)!
+  - meta:
+      meta_file: "**/.meta.yml" # (1)!
 ```
 
 Some more code
 
-
 === "C"
-    ``` c
-    #include <stdio.h>
+``` c
+#include <stdio.h>
 
     int main(void) {
       printf("Hello world!\n");
@@ -44,8 +43,8 @@ Some more code
     ```
 
 === "C++"
-    ``` c++
-    #include <iostream>
+``` c++
+#include <iostream>
 
     int main(void) {
       std::cout << "Hello world!" << std::endl;
@@ -53,10 +52,9 @@ Some more code
     }
     ```
 
-
 Another try.
 
-``` mermaid
+```mermaid
 graph LR
   A[Start] --> B{Error?};
   B -->|Yes| C[Hmm...];
@@ -67,7 +65,7 @@ graph LR
 
 One more.
 
-``` mermaid
+```mermaid
 stateDiagram-v2
   state fork_state <<fork>>
     [*] --> fork_state
@@ -85,71 +83,65 @@ Some Formatting.
 
 ++ctrl+alt+del++
 
-
-
 Some grids
 
 <div class="grid cards" markdown>
 
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+- :material-clock-fast:{ .lg .middle } **Set up in 5 minutes**
 
-    ---
+  ***
 
-    Install [`mkdocs-material`](#) with [`pip`](#) and get up
-    and running in minutes
+  Install [`mkdocs-material`](#) with [`pip`](#) and get up
+  and running in minutes
 
-    [:octicons-arrow-right-24: Getting started](#)
+  [:octicons-arrow-right-24: Getting started](#)
 
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+- :fontawesome-brands-markdown:{ .lg .middle } **It's just Markdown**
 
-    ---
+  ***
 
-    Focus on your content and generate a responsive and searchable static site
+  Focus on your content and generate a responsive and searchable static site
 
-    [:octicons-arrow-right-24: Reference](#)
+  [:octicons-arrow-right-24: Reference](#)
 
--   :material-format-font:{ .lg .middle } __Made to measure__
+- :material-format-font:{ .lg .middle } **Made to measure**
 
-    ---
+  ***
 
-    Change the colors, fonts, language, icons, logo and more with a few lines
+  Change the colors, fonts, language, icons, logo and more with a few lines
 
-    [:octicons-arrow-right-24: Customization](#)
+  [:octicons-arrow-right-24: Customization](#)
 
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+- :material-scale-balance:{ .lg .middle } **Open Source, MIT**
 
-    ---
+  ***
 
-    Material for MkDocs is licensed under MIT and available on [GitHub]
+  Material for MkDocs is licensed under MIT and available on [GitHub]
 
-    [:octicons-arrow-right-24: License](#)
+  [:octicons-arrow-right-24: License](#)
 
 </div>
-
 
 Moreeee.
 
 <div class="grid" markdown>
 
-:fontawesome-brands-html5: __HTML__ for content and structure
+:fontawesome-brands-html5: **HTML** for content and structure
 { .card }
 
-:fontawesome-brands-js: [__JavaScript__ for interactivity]()
+:fontawesome-brands-js: [**JavaScript** for interactivity]()
 { .card }
 
-:fontawesome-brands-css3: __CSS__ for text running out of boxes
+:fontawesome-brands-css3: **CSS** for text running out of boxes
 { .card }
 
-> :fontawesome-brands-internet-explorer: __Internet Explorer__ ... huh?
+> :fontawesome-brands-internet-explorer: **Internet Explorer** ... huh?
 
 </div>
 
-
 Emojis
 
-:smile: 
-
-
+:smile:
 
 Annotations
 
@@ -161,8 +153,6 @@ Annotations
 
 1.  :man_raising_hand: I'm an annotation!
 
-
-
 Annotations.
 
 !!! pied-piper "Pied Piper"
@@ -170,7 +160,6 @@ Annotations.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
     euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
     purus auctor massa, nec semper lorem quam in massa.
-
 
 # Introduction to Python 4 Data Analytics
 
@@ -204,6 +193,7 @@ To get started with Python you will need some foundational knowledge of the basi
 - Printing
 - Math
 - Packages/Libraries
+
 ### 4. Essential of programming
 
 Programming has many core concepts, and three of the absolute most important ones are loops, which allow us to do things repeatedly; functions, which help us save time by not having to re-write code everytime we do something; and if-then statements, which help us evaluate multiple criterion based on whether something is true or false.
@@ -239,3 +229,5 @@ The weekly exercises can be found in the Ed section of the course in Canvas. Ple
 ### 11. Additional Resources
 
 List of resources. (In Progress!)
+
+## Roadmap
