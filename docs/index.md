@@ -24,6 +24,7 @@ hide:
 }
 </style>
 
+
 <div class="primary-swapped-bg-fg m-0">
   <div class="grid-2 items-center pb-2 md-grid">
     <img src="images/old_libraryv.webp" style="max-height: 12rem; auto;" draggable="false" class="swap-first m-auto">
