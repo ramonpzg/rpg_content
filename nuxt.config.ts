@@ -8,5 +8,8 @@ export default defineNuxtConfig({
     // https://github.com/nuxt-modules/plausible
     '@nuxtjs/plausible',
     '@nuxthq/studio'
-  ]
+  ],
+  studio: {
+    enabled: true
+  }
 })
