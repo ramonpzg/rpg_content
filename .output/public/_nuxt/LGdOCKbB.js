@@ -1,1 +1,0 @@
-import{l as t,b as n,c,Z as o}from"./B6KPA_S3.js";const a={};function r(e,s){return n(),c("thead",null,[o(e.$slots,"default",{},void 0,!0)])}const d=t(a,[["render",r],["__scopeId","data-v-28e6c90a"]]);export{d as default};
