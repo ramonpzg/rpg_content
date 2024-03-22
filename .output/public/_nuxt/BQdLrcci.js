@@ -1,0 +1,1 @@
+import{l as r,b as t,c as n,Z as o}from"./BO48foVp.js";const s={};function c(e,a){return t(),n("li",null,[o(e.$slots,"default",{},void 0,!0)])}const d=r(s,[["render",c],["__scopeId","data-v-1b097e8e"]]);export{d as default};

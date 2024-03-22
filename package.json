@@ -17,5 +17,8 @@
     "@types/node": "^20.11.24",
     "eslint": "^8.57.0",
     "nuxt": "^3.10.3"
+  },
+  "dependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
