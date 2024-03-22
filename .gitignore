@@ -4,3 +4,15 @@ notebooks/
 node_modules/
 .docusaurus/
 .quarto/
+node_modules
+*.iml
+.idea
+*.log*
+.nuxt
+.vscode
+.DS_Store
+coverage
+dist
+sw.*
+.env
+.output
