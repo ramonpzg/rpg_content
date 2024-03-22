@@ -1,0 +1,1 @@
+import{l as o,b as t,c,Z as r}from"./B6KPA_S3.js";const n={};function s(e,a){return t(),c("blockquote",null,[r(e.$slots,"default",{},void 0,!0)])}const f=o(n,[["render",s],["__scopeId","data-v-54ff342a"]]);export{f as default};
